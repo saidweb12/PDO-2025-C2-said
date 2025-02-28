@@ -68,7 +68,7 @@ Pour la suite de la partie théorie de ce cours, j'ai créé un .pdf que vous po
 
 Nous allons maintenant mettre en pratique ce que nous avons vu dans la partie théorique. N'oubliez pas de créer un dossier à votre nom dans `stagiaires` et d'y mettre vos fichiers.
 
-Ouvrez PHPMyAdmin, sélectionnez `MariaDB` et importez la base de données `pdo_c1.sql` qui se trouve dans le dossier `datas` de ce dépôt.
+Ouvrez PHPMyAdmin, sélectionnez `MariaDB` et importez la base de données `pdo_c2.sql` qui se trouve dans le dossier `datas` de ce dépôt.
 
 ## Création d'un nouveau projet
 

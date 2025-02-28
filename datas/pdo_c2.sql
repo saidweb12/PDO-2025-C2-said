@@ -7,11 +7,11 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 --
--- Base de données : `pdo_c1`
+-- Base de données : `pdo_c2`
 --
-DROP DATABASE IF EXISTS `pdo_c1`;
-CREATE DATABASE IF NOT EXISTS `pdo_c1` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `pdo_c1`;
+DROP DATABASE IF EXISTS `pdo_c2`;
+CREATE DATABASE IF NOT EXISTS `pdo_c2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `pdo_c2`;
 
 -- --------------------------------------------------------
 
