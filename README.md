@@ -81,7 +81,6 @@ https://github.com/WebDevCF2m2025/PDO-2025-C2
 - On se met dans le projet (cd NomDuProjet) : origin/main existe déjà
 - Création de l'**upstream** pour renvoyer le projet via des **pull request** :
 `git remote add upstream SSH_KEY`
-- **Pull** de la branche **main** de **upstream** pour avoir les dernières modifications :
-- `git pull upstream main`
+- **Pull** de la branche **main** de **upstream** pour avoir les dernières modifications : `git pull upstream main`
 - Ne travaillez que dans votre dossier (stagiaires/NomDuStagiaire)
 - Travaillez sur votre branche : `git checkout -b NomDeLaBranche`, pas sur la `main`
