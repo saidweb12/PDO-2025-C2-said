@@ -27,3 +27,6 @@ try{
 
 
 echo "si je suis ici, c'est que la connexion a fonctionnée";
+
+// déconnexion
+$db = null;

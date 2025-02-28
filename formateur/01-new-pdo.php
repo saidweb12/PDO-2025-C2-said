@@ -22,3 +22,9 @@ $a++; echo '$a a son espace propre : '."$a, et ".'$b également : '.$b;
 $myBDD2 = $myBDD;
 
 var_dump($myBDD,$myBDD2);
+
+// déconnexion, supprime en réalité le lien en MySQL et MariaDB
+$myBDD = null;
+
+// seul $myBDD est déconnecté, $myBDD2 est toujours connecté
+var_dump($myBDD,$myBDD2);

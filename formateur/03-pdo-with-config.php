@@ -18,5 +18,7 @@ try{
     die($e->getMessage());
 }
 
+// déconnexion
+$db = null;
 
 echo "si je suis ici, c'est que la connexion a fonctionnée";

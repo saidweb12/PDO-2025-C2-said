@@ -68,17 +68,20 @@ Pour la suite de la partie théorie de ce cours, j'ai créé un .pdf que vous po
 
 Nous allons maintenant mettre en pratique ce que nous avons vu dans la partie théorique. N'oubliez pas de créer un dossier à votre nom dans `stagiaires` et d'y mettre vos fichiers.
 
-Ouvrez PHPMyAdmin, sélectionnez `MariaDB` et importez la base de données `pdo_c2.sql` qui se trouve dans le dossier `datas` de ce dépôt.
+Ouvrez PHPMyAdmin, sélectionnez `MySQL` et importez la base de données `pdo_c2.sql` qui se trouve dans le dossier `datas` de ce dépôt.
 
-## Création d'un nouveau projet
+## Fork du dépôt
 
-### Public sur GitHub
+Créez un fork de ce dépôt sur Github : 
 
-- Créez un **fork** sur votre compte
+https://github.com/WebDevCF2m2025/PDO-2025-C2
+
+
 - **Clonage** de **votre**  fork en local
 - On se met dans le projet (cd NomDuProjet) : origin/main existe déjà
 - Création de l'**upstream** pour renvoyer le projet via des **pull request** :
 `git remote add upstream SSH_KEY`
 - **Pull** de la branche **main** de **upstream** pour avoir les dernières modifications :
 - `git pull upstream main`
+- Ne travaillez que dans votre dossier (stagiaires/NomDuStagiaire)
 - Travaillez sur votre branche : `git checkout -b NomDeLaBranche`, pas sur la `main`
