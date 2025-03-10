@@ -9,7 +9,7 @@ $myBDD = new PDO(
     # username -> login
     'root', 
     #password -> password
-    '',
+    '2',
     # options (null ou tableau d'options)
 
 );
@@ -18,13 +18,24 @@ $a = 5;
 $b = $a; 
 $a++; echo '$a a son espace propre : '."$a, et ".'$b également : '.$b;
 
-// ceci n'est pas un clonage, mais la création d'un alias vers la connexion !
+// ceci n'est pas un clonage, mais la création d'un alias ou d'un lien symbolique vers la connexion !
 $myBDD2 = $myBDD;
 
-var_dump($myBDD,$myBDD2);
+$myBDD3 = new PDO(
+    # dsn -> paramètres de connexion à la DB pdo_c2
+    'mysql:host=localhost;dbname=ecole;port=3306;charset=utf8', 
+    # username -> login
+    'root', 
+    #password -> password
+    '',
+    # options (null ou tableau d'options)
+
+);
+
+var_dump($myBDD,$myBDD2,$myBDD3);
 
 // déconnexion, supprime en réalité le lien en MySQL et MariaDB
 $myBDD = null;
 
 // seul $myBDD est déconnecté, $myBDD2 est toujours connecté
-var_dump($myBDD,$myBDD2);
+var_dump($myBDD,$myBDD2,$myBDD3);
