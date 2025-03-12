@@ -1,6 +1,13 @@
 # PDO-2025-C2
 Connexion PDO - PHP / MySQL, MariaDB, etc ...
 
+## Menu
+
+- [PDO : Présentation](#pdo--présentation)
+- [PDO : Installation](#pdo--installation)
+- [PDO : Connexion à la base de données](#pdo--connexion-à-la-base-de-données)
+- [PDO : Exemples et exercices](#pdo--exemples-et-exercices)
+- [Fork du dépôt](#fork-du-dépôt)
 
 ## PDO : Présentation
 
@@ -13,6 +20,12 @@ Cette interface est **orientée objet**, et est une couche d'abstraction qui per
 **PDO** est disponible depuis PHP 5.1.* . Il est recommandé d'utiliser PDO pour accéder à une base de données en `MySQL` ou `MariaDB`. En effet, l'extension `mysql_` est obsolète depuis PHP 5.5.0 et sera supprimée dans une version future de PHP. L'extension `mysqli_` est une alternative `procédurale et/ou orienté objet` à `mysql_`, mais PDO est plus simple à utiliser.
 
 Pour voir les différences entre les extensions `mysqli_` et `PDO`, vous pouvez consulter le [comparatif](https://www.php.net/manual/fr/mysqlinfo.api.choosing.php) sur le site officiel de PHP.
+
+---
+
+[Retour au menu](#menu)
+
+---
 
 ## PDO : Installation
 
@@ -29,6 +42,12 @@ extension=php_pdo_mysql.dll
 ```
 
 PDO est généralement installé par défaut avec PHP.
+
+---
+
+[Retour au menu](#menu)
+
+---
 
 ## PDO : Connexion à la base de données
 
@@ -64,11 +83,23 @@ $pdo = null;
 
 Pour la suite de la partie théorie de ce cours, j'ai créé un .pdf que vous pouvez télécharger [ici](https://github.com/WebDevCF2m2025/PDO-2025-C1/blob/main/datas/PDO-2025.pdf).
 
+---
+
+[Retour au menu](#menu)
+
+---
+
 ## PDO : Exemples et exercices
 
 Nous allons maintenant mettre en pratique ce que nous avons vu dans la partie théorique. N'oubliez pas de créer un dossier à votre nom dans `stagiaires` et d'y mettre vos fichiers.
 
 Ouvrez PHPMyAdmin, sélectionnez `MySQL` et importez la base de données `pdo_c2.sql` qui se trouve dans le dossier `datas` de ce dépôt.
+
+---
+
+[Retour au menu](#menu)
+
+---
 
 ## Fork du dépôt
 
@@ -84,3 +115,9 @@ https://github.com/WebDevCF2m2025/PDO-2025-C2
 - **Pull** de la branche **main** de **upstream** pour avoir les dernières modifications : `git pull upstream main`
 - Ne travaillez que dans votre dossier (stagiaires/NomDuStagiaire)
 - Travaillez sur votre branche : `git checkout -b NomDeLaBranche`, pas sur la `main`
+
+---
+
+[Retour au menu](#menu)
+
+---
