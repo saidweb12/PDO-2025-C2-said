@@ -5,9 +5,12 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
 
 - [PDO : Présentation](#pdo--présentation)
 - [PDO : Installation](#pdo--installation)
-- [PDO : Connexion à la base de données](#pdo--connexion-à-la-base-de-données)
 - [PDO : Exemples et exercices](#pdo--exemples-et-exercices)
 - [Fork du dépôt](#fork-du-dépôt)
+- [PDO : Connexion à la base de données](#pdo--connexion-à-la-base-de-données)
+  - [Connexion PDO avec try/catch](#connexion-pdo-avec-trycatch)
+  - [Séparation des données sensibles de la connexion](#séparation-des-données-sensibles-de-la-connexion)
+  - 
 
 ## PDO : Présentation
 
@@ -42,6 +45,40 @@ extension=php_pdo_mysql.dll
 ```
 
 PDO est généralement installé par défaut avec PHP.
+
+---
+
+[Retour au menu](#menu)
+
+---
+
+
+## PDO : Exemples et exercices
+
+Nous allons maintenant mettre en pratique ce que nous avons vu dans la partie théorique. N'oubliez pas de créer un dossier à votre nom dans `stagiaires` et d'y mettre vos fichiers.
+
+Ouvrez PHPMyAdmin, sélectionnez `MySQL` et importez la base de données `pdo_c2.sql` qui se trouve dans le dossier `datas` de ce dépôt.
+
+---
+
+[Retour au menu](#menu)
+
+---
+
+## Fork du dépôt
+
+Créez un fork de ce dépôt sur Github : 
+
+https://github.com/WebDevCF2m2025/PDO-2025-C2
+
+
+- **Clonage** de **votre**  fork en local
+- On se met dans le projet (cd NomDuProjet) : origin/main existe déjà
+- Création de l'**upstream** pour renvoyer le projet via des **pull request** :
+`git remote add upstream SSH_KEY`
+- **Pull** de la branche **main** de **upstream** pour avoir les dernières modifications : `git pull upstream main`
+- Ne travaillez que dans votre dossier (stagiaires/NomDuStagiaire)
+- Travaillez sur votre branche : `git checkout -b NomDeLaBranche`, pas sur la `main`
 
 ---
 
@@ -89,11 +126,58 @@ Pour la suite de la partie théorie de ce cours, j'ai créé un .pdf que vous po
 
 ---
 
-## PDO : Exemples et exercices
+### Connexion PDO avec try/catch
 
-Nous allons maintenant mettre en pratique ce que nous avons vu dans la partie théorique. N'oubliez pas de créer un dossier à votre nom dans `stagiaires` et d'y mettre vos fichiers.
+Lorsqu'on se connecte en PDO, la bonne pratique est de récupérer les éventuelles erreurs grâce aux fonctions `try` et `catch`, et fermeture de la connexion.
 
-Ouvrez PHPMyAdmin, sélectionnez `MySQL` et importez la base de données `pdo_c2.sql` qui se trouve dans le dossier `datas` de ce dépôt.
+https://www.php.net/manual/fr/language.exceptions.php
+
+
+```php
+// essai
+try{
+
+// n'est exécuté qu'en cas d'erreur dans le try
+// si erreur équivaut à :
+// $e = new Exception('erreur du try');
+}catch(Exception $e){
+    // si on veut afficher le code erreur
+    echo $e->getCode();
+    // si on veut afficher le message erreur
+    echo $e->getMessage();
+}
+```
+
+On va appliquer ça à notre connexion :
+
+```php
+
+try{
+    // instanciation d'une connexion PDO
+    $db = new PDO(
+    # dsn → paramètres de connexion à la DB pdo_c2
+    'mysql:host=localhost;dbname=pdo_c2;port=3306;charset=utf8', 
+    # username -> login
+    'root', 
+    #password -> password
+    '',
+    # options (null ou tableau d'options)
+    );
+
+// on capture l'erreur de type PDOException
+// bonne pratique : utiliser plutôt Exception $e
+}catch (PDOException $pdoe){
+    // arrêt du script avec die()
+    // et affichage de l'erreur
+    die("Code Erreur PDO 
+    : {$pdoe->getCode()}<br>
+    Message de l'erreur {$pdoe->getMessage()}");
+}
+
+// bonne pratique, fermeture de la connexion
+$db = null;
+
+```
 
 ---
 
@@ -101,20 +185,39 @@ Ouvrez PHPMyAdmin, sélectionnez `MySQL` et importez la base de données `pdo_c2
 
 ---
 
-## Fork du dépôt
+### Séparation des données sensibles de la connexion
 
-Créez un fork de ce dépôt sur Github : 
+Nous allons séparer les données de la connexion, et les rajouter dans un autre fichier. On va les mettre dans des constantes.
 
-https://github.com/WebDevCF2m2025/PDO-2025-C2
+Le fichier de production ne sera pas mis sur github, gràce au `.gitignore`.
 
+```php
+<?php
+# config-prod.php
+# fichier de configuration de PDO en mode production
+const DB_CONNECT_TYPE = "mysql"; // MySQL et MariaDB
+const DB_CONNECT_HOST = "localhost";
+const DB_CONNECT_PORT = 3306;
+const DB_CONNECT_NAME = "pdo_c2";
+const DB_CONNECT_CHARSET = "utf8";
+const DB_CONNECT_USER = "root";
+const DB_CONNECT_PWD = "";
+```
 
-- **Clonage** de **votre**  fork en local
-- On se met dans le projet (cd NomDuProjet) : origin/main existe déjà
-- Création de l'**upstream** pour renvoyer le projet via des **pull request** :
-`git remote add upstream SSH_KEY`
-- **Pull** de la branche **main** de **upstream** pour avoir les dernières modifications : `git pull upstream main`
-- Ne travaillez que dans votre dossier (stagiaires/NomDuStagiaire)
-- Travaillez sur votre branche : `git checkout -b NomDeLaBranche`, pas sur la `main`
+Création du `.gitignore`:
+
+```git
+# données sensibles
+config-prod.php
+```
+
+---
+
+[Retour au menu](#menu)
+
+---
+
+### Les méthodes query et exec
 
 ---
 

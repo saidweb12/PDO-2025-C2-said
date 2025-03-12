@@ -42,7 +42,7 @@ $db = null;
 while($item = $request->fetch()){
     // tableau numérique
     echo $item[0]." ".$item[1]." ".$item[2]."<br>";
-    // tableau numérique
+    // tableau associatif
     echo $item['idtheuser']." ".$item['theuserlogin']." ".$item['theusername']."<hr>";
 }
 
