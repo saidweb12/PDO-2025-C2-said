@@ -1,6 +1,9 @@
 # PDO-2025-C2
 Connexion PDO - PHP / MySQL, MariaDB, etc ...
 
+## Menu
+- [PDO : Présentation](#pdo--présentation)
+- [PDO : Installation](#pdo--installation)
 
 ## PDO : Présentation
 
