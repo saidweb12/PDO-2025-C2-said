@@ -9,6 +9,7 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
 - [Fork du dépôt](#fork-du-dépôt)
 - [PDO : Connexion à la base de données](#pdo--connexion-à-la-base-de-données)
   - [Connexion PDO avec try/catch](#connexion-pdo-avec-trycatch)
+  - [Les méthodes query et exec]()
 
 ## PDO : Présentation
 
@@ -185,7 +186,7 @@ $db = null;
 
 ### Séparation des données sensibles de la connexion
 
-Nous allons séparer les données de la connexion, et les rajouter dans un autre fichier.
+Nous allons séparer les données de la connexion, et les rajouter dans un autre fichier. On va les mettre dans des constantes.
 
 Le fichier de production ne sera pas mis sur github, gràce au `.gitignore`.
 
@@ -205,5 +206,20 @@ const DB_CONNECT_PWD = "";
 Création du `.gitignore`:
 
 ```git
+# données sensibles
 config-prod.php
 ```
+
+---
+
+[Retour au menu](#menu)
+
+---
+
+### Les méthodes query et exec
+
+---
+
+[Retour au menu](#menu)
+
+---
