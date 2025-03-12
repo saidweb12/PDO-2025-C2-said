@@ -51,7 +51,9 @@ $db = null;
 <?php
 while($item = $request->fetch()){
 
-    // tableau numérique
+    //echo $item[0];
+    //echo $item->idtheuser;
+    // tableau associatif
     echo $item['idtheuser']." ".$item['theuserlogin']." ".$item['theusername']."<hr>";
 }
 

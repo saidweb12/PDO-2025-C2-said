@@ -56,7 +56,7 @@ $db = null;
 <h3>PDO::fetchAll</h3>
 <p>Dès que l'on suppose que l'on peut avoir plus d'un résultat (autre que 0 ou 1), nous utiliserons le fetchAll()</p>
 <?php
-//var_dump($resultTheArticle);
+// var_dump($resultTheArticle);
 // tant qu'on a des résultats
 foreach($resultTheArticle as $item):
 ?>
