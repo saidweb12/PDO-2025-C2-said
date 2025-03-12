@@ -8,6 +8,7 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
 - [PDO : Connexion à la base de données](#pdo--connexion-à-la-base-de-données)
 - [PDO : Exemples et exercices](#pdo--exemples-et-exercices)
 - [Fork du dépôt](#fork-du-dépôt)
+  - [Connexion PDO avec try/catch](#connexion-pdo-avec-trycatch)
 
 ## PDO : Présentation
 
