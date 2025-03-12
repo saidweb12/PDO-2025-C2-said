@@ -13,11 +13,12 @@
 <ul>
     <?php foreach ($resultTheArticle as $article) : ?>
         <li>
-            <h2><?= htmlspecialchars($article['thearticletitle']) ?></h2>
-            <p>Publié le : <?= htmlspecialchars($article['thearticledate']) ?></p>
+            <h2><?= $article['thearticletitle'] ?></h2>
+            <p>Publié le : <?= $article['thearticledate'] ?></p>
         </li>
     <?php endforeach; ?>
 </ul>
 
 </body>
 </html>
+
