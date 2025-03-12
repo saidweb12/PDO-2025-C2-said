@@ -126,7 +126,10 @@ Pour la suite de la partie théorie de ce cours, j'ai créé un .pdf que vous po
 
 ### Connexion PDO avec try/catch
 
-Lorsqu'on se connecte en PDO, la bonne pratique est de récupérer les éventuelles erreurs grâce aux fonctions
+Lorsqu'on se connecte en PDO, la bonne pratique est de récupérer les éventuelles erreurs grâce aux fonctions `try` et `catch`, et fermeture de la connexion.
+
+https://www.php.net/manual/fr/language.exceptions.php
+
 
 ```php
 // essai
@@ -143,9 +146,64 @@ try{
 }
 ```
 
+On va appliquer ça à notre connexion :
+
+```php
+
+try{
+    // instanciation d'une connexion PDO
+    $db = new PDO(
+    # dsn → paramètres de connexion à la DB pdo_c2
+    'mysql:host=localhost;dbname=pdo_c2;port=3306;charset=utf8', 
+    # username -> login
+    'root', 
+    #password -> password
+    '',
+    # options (null ou tableau d'options)
+    );
+
+// on capture l'erreur de type PDOException
+// bonne pratique : utiliser plutôt Exception $e
+}catch (PDOException $pdoe){
+    // arrêt du script avec die()
+    // et affichage de l'erreur
+    die("Code Erreur PDO 
+    : {$pdoe->getCode()}<br>
+    Message de l'erreur {$pdoe->getMessage()}");
+}
+
+// bonne pratique, fermeture de la connexion
+$db = null;
+
+```
 
 ---
 
 [Retour au menu](#menu)
 
 ---
+
+### Séparation des données sensibles de la connexion
+
+Nous allons séparer les données de la connexion, et les rajouter dans un autre fichier.
+
+Le fichier de production ne sera pas mis sur github, gràce au `.gitignore`.
+
+```php
+<?php
+# config-prod.php
+# fichier de configuration de PDO en mode production
+const DB_CONNECT_TYPE = "mysql"; // MySQL et MariaDB
+const DB_CONNECT_HOST = "localhost";
+const DB_CONNECT_PORT = 3306;
+const DB_CONNECT_NAME = "pdo_c2";
+const DB_CONNECT_CHARSET = "utf8";
+const DB_CONNECT_USER = "root";
+const DB_CONNECT_PWD = "";
+```
+
+Création du `.gitignore`:
+
+```gitexclude
+config-prod.php
+```

@@ -39,3 +39,29 @@ $myBDD = null;
 
 // seul $myBDD est déconnecté, $myBDD2 est toujours connecté
 var_dump($myBDD,$myBDD2,$myBDD3);
+
+try{
+    // instanciation d'une connexion PDO
+    $db = new PDO(
+    # dsn → paramètres de connexion à la DB pdo_c2
+        'mysql:host=localhost;dbname=pdo_c2;port=3306;charset=utf8',
+        # username -> login
+        'root',
+        #password -> password
+        '',
+    # options (null ou tableau d'options)
+    );
+
+// on capture l'erreur de type PDOException
+// bonne pratique : utiliser plutôt Exception $e
+}catch (PDOException $pdoe){
+    // arrêt du script avec die()
+    // et affichage de l'erreur
+    die("Code Erreur PDO 
+    : {$pdoe->getCode()}<br>
+    Message de l'erreur {$pdoe->getMessage()}");
+}
+
+var_dump($db);
+
+$db = null;
