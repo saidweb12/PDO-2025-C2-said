@@ -121,3 +121,22 @@ https://github.com/WebDevCF2m2025/PDO-2025-C2
 [Retour au menu](#menu)
 
 ---
+
+### Connexion PDO avec try/catch
+
+Lorsqu'on se connecte en PDO, la bonne pratique est de récupérer les éventuelles erreurs grâce aux fonctions
+
+```php
+// essai
+try{
+
+// n'est exécuté qu'en cas d'erreur dans le try
+// si erreur équivaut à :
+// $e = new Exception('erreur du try');
+}catch(Exception $e){
+    // si on veut afficher le code erreur
+    echo $e->getCode();
+    // si on veut afficher le message erreur
+    echo $e->getMessage();
+}
+```

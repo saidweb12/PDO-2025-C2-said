@@ -9,7 +9,7 @@ $myBDD = new PDO(
     # username -> login
     'root', 
     #password -> password
-    '2',
+    '',
     # options (null ou tableau d'options)
 
 );
@@ -23,7 +23,7 @@ $myBDD2 = $myBDD;
 
 $myBDD3 = new PDO(
     # dsn -> paramètres de connexion à la DB pdo_c2
-    'mysql:host=localhost;dbname=ecole;port=3306;charset=utf8', 
+    'mysql:host=localhost;dbname=ecole;port=3306;charset=utf8',
     # username -> login
     'root', 
     #password -> password
