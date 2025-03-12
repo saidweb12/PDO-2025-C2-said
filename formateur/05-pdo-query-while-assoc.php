@@ -66,6 +66,7 @@ while ($item = $requestTheArticle->fetch(PDO::FETCH_OBJ)):
 <p>Id : <?=$item->idthearticle ." | Title : ".$item->thearticletitle?> | Date : <?=$item->thearticledate?></p>
 <?php
 endwhile;
+$requestTheArticle->closeCursor();
 ?>
 <p></p>
 </body>
