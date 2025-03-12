@@ -204,6 +204,6 @@ const DB_CONNECT_PWD = "";
 
 Création du `.gitignore`:
 
-```gitexclude
+```git
 config-prod.php
 ```
