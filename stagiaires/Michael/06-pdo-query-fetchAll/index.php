@@ -26,24 +26,45 @@ try{
 
 // on effectue une requête où on prend les 20 derniers articles
 $sql = "SELECT * FROM thearticle 
+         -- WHERE idthearticle = 800
         ORDER BY thearticledate DESC
         LIMIT 20;";
 # en cas de soucis SQL non affiché, on peut utiliser aussi un try catch (pas une bonne pratique en production, ok en dev et test)
 try {
+    # exécution de la requête (SQL peut se trouver dedans)
     $query = $db->query($sql);
 }catch(Exception $e){
     die($e->getMessage());
 }
 
-$articles = $query->fetchAll(PDO::FETCH_ASSOC);
+# on compte le nombre de lignes de résultats
+$nbArticles = $query->rowCount();
+
+# si pas de résultats
+if($nbArticles===0){
+    // $articles est un string qui contient le message d'erreur
+    $articles = "Pas encore d'articles";
+# on a au moins un résultat
+}else{
+    # $articles est tableau indexé
+    # contenant des tableaux associatif
+    // transformation en tableau associatif (fetchAll)
+    $articles = $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+
+
 
 // var_dump($query,$articles);
-// par `thearticle`.`thearticledate` descendant avec query()
 
-// transformation en tableau associatif (fetchAll)
+
+
 
 // fermeture de la requête
+$query->closeCursor();
 // fermeture de connexion
+$db = null;
 
 // appel de la vue
 include"accueilView.php";

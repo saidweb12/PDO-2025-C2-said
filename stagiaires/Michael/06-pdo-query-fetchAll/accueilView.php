@@ -8,7 +8,27 @@
     <title>20 derniers articles</title>
 </head>
 <body>
-<h1>20 derniers articles</h1>
-<p>Affichez ici les 20 derniers articles (si possible avec le nom de l'auteur) en utilisant un foreach</p>
+
+<?php
+// pas d'articles
+if(is_string($articles)):
+?>
+<p><?=$articles?></p>
+<?php
+// on a au moins 1 article
+else:
+    ?>
+    <h1><?=$nbArticles?> derniers articles</h1>
+    <?php
+    foreach($articles as $article):
+?>
+<h3><?=$article['thearticletitle']?> <small>Ecrit le <?=$article['thearticledate']?> par ...</small></h3>
+<p><?=$article['thearticletext']?></p>
+<hr>
+<?php
+    endforeach;
+
+endif;
+?>
 </body>
 </html>
