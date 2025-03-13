@@ -39,12 +39,24 @@ try{
 
 // on effectue une requête où on prend les 20 derniers articles
 // par `thearticle`.`thearticledate` descendant avec query()
-$request = $db->query("
+/*$request = $db->query("
     SELECT * FROM thearticle 
         ORDER BY thearticledate DESC
     LIMIT 0,20
     ;
+");*/
+$request = $db->query("
+    SELECT a.thearticletitle, a.thearticletext, a.thearticledate,
+           u.theusername a
+    FROM thearticle a -- alias => thearticle = a
+    INNER JOIN theuser u -- alias => theuser = u
+        ON u.idtheuser = a.theuser_idtheuser
+    -- WHERE 
+    ORDER BY a.thearticledate DESC
+    LIMIT 0,20
+    ;
 ");
+
 
 $countArticles = $request->rowCount();
 

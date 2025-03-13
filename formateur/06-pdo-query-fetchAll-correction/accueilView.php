@@ -15,12 +15,12 @@
 foreach($articles as $article){
 ?>
     <h3><?=cutTitle($article['thearticletitle'])?></h3>
-    <h4>Ecrit par ... le <?=$article['thearticledate']?></h4>
+    <h4>Ecrit par <?=$article['theusername']?> le <?=$article['thearticledate']?></h4>
     <p><?=$article['thearticletext']?></p>
 <?php
 }
 // var_dump($db,$request,$countArticles,$articles,);
-//var_dump($articles[0]);
+var_dump($articles[0]);
 ?>
 </body>
 </html>
