@@ -36,6 +36,8 @@ $requestTheArticle->closeCursor();
 
 // déconnexion (on a déjà récupéré les résultats)
 $db = null;
+
+//var_dump($resultTheArticle);
 ?>
 <!doctype html>
 <html lang="en">
