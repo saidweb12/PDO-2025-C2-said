@@ -46,5 +46,3 @@ $requestTheArticle->closeCursor();
 $db = null;
 
 ?>
-
-include"accueilView.php";
