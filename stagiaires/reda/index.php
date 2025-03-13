@@ -3,10 +3,11 @@
 
 // on appelle le fichier config-prod.php (requis une seule fois).
 require_once "config-prod.php";
+
+
 // on se connecte à la DB 'pdo_c2' via PDO
 // en utilisant les constantes de connexion
 // en utilisant un try / catch
-
 try {
   // instanciation avec PDO
   $db = new PDO(
@@ -14,10 +15,10 @@ try {
     DB_CONNECT_USER,
     DB_CONNECT_PWD,
   );
-  // on effectue une requête où on prend les 20 derniers articles
 } catch (Exception $e) {
   die($e->getMessage());
 }
+// on effectue une requête où on prend les 20 derniers articles
 // par `thearticle`.`thearticledate` descendant avec query()
 $requestTheArticle = $db->query("
         SELECT a.`idthearticle` as id,
@@ -31,5 +32,5 @@ $resultTheArticle = $requestTheArticle->fetchAll();
 $requestTheArticle->closeCursor();
 // fermeture de connexion
 $db = null;
-// appel de la vue
+// appel de la vue (ligne finale)
 include "accueilView.php";

@@ -15,7 +15,7 @@
     <?php
     foreach ($resultTheArticle as $item):
     ?>
-        <h4><?= " - $item[title]" ?></h4>
+        <h4><?= " -  $item[title]" ?></h4>
         <p><?= "Publié le  {$item['date']}" ?></p>
     <?php
     endforeach;
