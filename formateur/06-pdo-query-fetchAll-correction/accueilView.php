@@ -10,5 +10,8 @@
 <body>
 <h1>20 derniers articles</h1>
 <p>Affichez ici les 20 derniers articles (si possible avec le nom de l'auteur) en utilisant un foreach</p>
+<?php
+var_dump($db,$request,$countArticles,$articles,);
+?>
 </body>
 </html>

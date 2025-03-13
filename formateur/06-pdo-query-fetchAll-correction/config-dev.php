@@ -1,4 +1,5 @@
 <?php
+# À enregistrer sous le nom config-prod.php
 # fichier de configuration de PDO en mode développement
 const DB_CONNECT_TYPE = "mysql"; // MySQL et MariaDB
 const DB_CONNECT_HOST = "localhost";
