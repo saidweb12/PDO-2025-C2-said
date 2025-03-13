@@ -16,7 +16,6 @@
 // fermeture de connexion
 
 // appel de la vue
-include "accueilView.php";
 require_once "config-prod.php";
 
 try {
@@ -33,10 +32,12 @@ try {
     die($e->getMessage());
 }
 
-$requestTheArticle = $db->query("SELECT * FROM `thearticle` ;");
+$requestTheArticle = $db->query("SELECT * FROM `thearticle` ORDER BY `thearticledate` DESC LIMIT 20 ;");
 
 $resultTheArticle = $requestTheArticle->fetchAll();
 
 $requestTheArticle->closeCursor();
 
 $db = null;
+
+include "accueilView.php";

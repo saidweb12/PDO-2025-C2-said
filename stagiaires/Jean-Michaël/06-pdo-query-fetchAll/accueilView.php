@@ -12,6 +12,12 @@
 <body>
     <h1>20 derniers articles</h1>
     <p>Affichez ici les 20 derniers articles (si possible avec le nom de l'auteur) en utilisant un foreach</p>
+    <?php foreach ($resultTheArticle as $article) : ?>
+        <li>
+            <h2><?= $article['thearticletitle'] ?></h2>
+            <p>Publié le : <?= $article['thearticledate'] ?></p>
+        </li>
+    <?php endforeach; ?>
 </body>
 
 </html>
