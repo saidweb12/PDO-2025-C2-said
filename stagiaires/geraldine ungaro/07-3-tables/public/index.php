@@ -9,8 +9,13 @@
 // et en activant les erreurs et le fetchAssoc par défaut
 
 // suivant l'existence de certaines variables get
-if(!empty($_GET)) {
+if(isset($_GET["articles"])) {
 // effectuez la requête SQL propre à chaque page, puis appelez les vues vers les pages
+    echo "je suis sur articles";
+    
+}elseif(isset($_GET['users'])){
+    
+    echo "je suis sur users";
 
 
 
