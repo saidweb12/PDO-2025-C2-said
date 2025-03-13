@@ -1,5 +1,5 @@
 <?php
-// Contrôleur frontal
+# index.php | Contrôleur frontal
 
 // on appelle le fichier config-prod.php (requis une seule fois).
 
