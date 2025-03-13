@@ -4,6 +4,9 @@
 // on appelle le fichier config-prod.php (requis une seule fois).
 require_once("config-prod.php");
 
+// appel des dépendances (ici des fonctions utilisateurs)
+include("functions.php");
+
 // en utilisant un try / catch,
 // on se connecte à la DB 'pdo_c2' via PDO
 // en utilisant les constantes de connexion
