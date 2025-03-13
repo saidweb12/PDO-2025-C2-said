@@ -16,33 +16,27 @@
 // fermeture de connexion
 
 // appel de la vue
-include"accueilView.php";
-require_once "config_pdo_c2.php";
+include "accueilView.php";
+require_once "config-prod.php";
 
-try{
+try {
 
     $db = new PDO(
-        DB_CONNECT_TYPE.":host=".DB_CONNECT_HOST.";dbname=".DB_CONNECT_NAME.";port=".DB_CONNECT_PORT.";charset=".DB_CONNECT_CHARSET,
+        DB_CONNECT_TYPE . ":host=" . DB_CONNECT_HOST . ";dbname=" . DB_CONNECT_NAME . ";port=" . DB_CONNECT_PORT . ";charset=" . DB_CONNECT_CHARSET,
         DB_CONNECT_USER,
         DB_CONNECT_PWD,
     );
 
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+} catch (Exception $e) {
 
-}catch(Exception $e){
-    
     die($e->getMessage());
 }
 
-// on récupère les champs 'idthearticle', 'thearticletitle' et 'thearticledate' lorsque la date est supérieure à '2020-01-01 20:43:30'
-$requestTheArticle = $db->query("SELECT * FROM `thearticle`;");
-// récupération de toutes les données au format tableau indexé (fetchAll) contenant des tableaux associatifs ($db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);)
+$requestTheArticle = $db->query("SELECT * FROM `thearticle` ;");
+
 $resultTheArticle = $requestTheArticle->fetchAll();
 
-// bonne pratique
 $requestTheArticle->closeCursor();
 
-// déconnexion (on a déjà récupéré les résultats)
 $db = null;
-
-?>
