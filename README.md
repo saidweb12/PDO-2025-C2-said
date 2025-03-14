@@ -19,6 +19,7 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
     - [Documentation sur `query`](#documentation-sur-query)
     - [Documentation sur le `closeCursor`](#documentation-sur-le-closecursor)
     - [Documentation sur `rowCount`](#documentation-sur-rowcount)
+  - [Méthode `exec`](#méthode-exec)
 
 ## PDO : Présentation
 
@@ -439,6 +440,57 @@ On peut connaitre le nombre de lignes retournées par la requête en utilisant l
 // nombre de lignes retournées
 $nbRows = $query->rowCount();
 ```
+
+---
+
+[Retour au menu](#menu)
+
+---
+
+### Méthode `exec`
+
+La méthode `exec` permet d'exécuter une requête SQL de type `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, etc. Elle retourne le nombre de lignes affectées par la requête.
+
+Attention, cette méthode ne permet pas d'exécuter des requêtes préparées, donc **attention aux injections SQL**.
+
+```php
+<?php
+# index.php
+
+# inclusion du fichier de configuration
+require_once "config-dev.php";
+
+# connexion voir à "Connexion à la base de données complète"
+# ...
+
+    // requête SQL sans entrées de l'utilisateur
+    $sql = "INSERT INTO `table` (`col1`, `col2`) VALUES ('val1', 'val2')";
+
+    // Exécution de la requête SQL 
+    $nbRows = $db->exec($sql);
+
+    // etc ...
+
+    # on peut connaître le nombre de lignes affectées
+    # via la variable de retour d'exec
+    echo "Nombre de lignes affectées : $nbRows";
+
+    // fermeture de la connexion
+    $db = null;
+
+```
+
+---
+
+[Retour au menu](#menu)
+
+---
+
+#### Documentation sur `exec`
+
+PDO::exec() exécute une instruction SQL et retourne le nombre de lignes affectées.
+
+https://www.php.net/manual/fr/pdo.exec.php
 
 ---
 
