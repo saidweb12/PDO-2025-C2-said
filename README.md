@@ -12,6 +12,7 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
   - [Séparation des données sensibles de la connexion](#séparation-des-données-sensibles-de-la-connexion)
   - [Connexion à la base de données complète](#connexion-à-la-base-de-données-complète)
   - [Les méthodes query et exec](#les-méthodes-query-et-exec)
+    - [Méthode `query`](#méthode-query)
 
 ## PDO : Présentation
 
@@ -129,7 +130,7 @@ Pour la suite de la partie théorie de ce cours, j'ai créé un .pdf que vous po
 
 ### Connexion PDO avec try/catch
 
-Lorsqu'on se connecte en PDO, la bonne pratique est de récupérer les éventuelles erreurs grâce aux fonctions `try` et `catch`, et fermeture de la connexion.
+Lorsqu'on se connecte en `PDO`, la bonne pratique est de récupérer les éventuelles erreurs grâce aux fonctions `try` et `catch`, et fermeture de la connexion.
 
 https://www.php.net/manual/fr/language.exceptions.php
 
@@ -179,6 +180,10 @@ try{
 $db = null;
 
 ```
+
+Gestion des erreurs `PDO` :
+
+https://www.php.net/manual/fr/pdo.error-handling.php
 
 ---
 
@@ -282,12 +287,16 @@ try{
         // qui devrait être déclarée dans ce tableau
         // (voir le pdf)
         [
-            // activation des erreurs (inutile depuis 7.4)
+            // activation des erreurs 
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             // on va définir le fetch mode en tableau associatif
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ],
     );
+
+// on peut modifier un attribut de PDO en utilisant setAttribute également
+// ici, on active les erreurs (déjà fait dans le tableau des options)
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // si erreur : $e = new Exception(...)
 }catch (Exception $e){
@@ -309,6 +318,59 @@ $db = null;
 
 ### Les méthodes query et exec
 
+`query` et `exec` sont des méthodes de la classe `PDO` qui permettent d'exécuter des requêtes SQL non préparées.
+
+Nous utiliserons `query` pour les requêtes `SELECT` et `exec` pour les requêtes `INSERT`, `UPDATE` et `DELETE`, voir des requêtes de gestion des tables et bases de données comme `CREATE`, `DROP`, etc.
+
+Ces méthodes retournent un objet de type `PDOStatement` qui contient les résultats de la requête.
+
+**Nous éviterons de les utiliser** quand il y a des risques d'**injections SQL**, nous verrons plus tard comment les éviter.
+
+---
+
+[Retour au menu](#menu)
+
+---
+
+#### Méthode `query`
+
+La méthode `query` permet d'exécuter une requête SQL de type `SELECT` et de récupérer les résultats lorsqu'il y en a. Attention, cette méthode ne permet pas d'exécuter des requêtes préparées.
+
+```php
+<?php
+# index.php
+
+# inclusion du fichier de configuration
+require_once "config-dev.php";
+
+# connexion voir à "Connexion à la base de données complète"
+# ...
+
+    // requête SQL sans entrées utilisateur
+    $sql = "SELECT * FROM `table`";
+
+    // Exécution de la requête SQL 
+    $query = $db->query($sql);
+
+    // récupération des résultats (tableau associatif),
+    // on peut utiliser fetch() pour récupérer un seul résultat
+    // Le PDO::FETCH_ASSOC peut déja être défini dans les options de connexion
+    $results = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    // etc ...
+
+    # bonnes pratiques
+    
+    // fermeture de la requête
+    $query->closeCursor();
+
+    // effacement des résultats (si déjà utilisés)
+    $results = null;
+
+    // fermeture de la connexion
+    $db = null;
+
+```
 
 
 ---
