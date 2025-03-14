@@ -24,7 +24,7 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
   - [Méthode `exec`](#méthode-exec)
     - [Documentation sur `exec`](#documentation-sur-exec)
     - [Documentation sur `lastInsertId`](#documentation-sur-lastinsertid)
-  - [Méthodes `fetch` et `fetchAll`](#méthodes-fetch-et-fetchall)
+- [PDOStatement : Méthodes `fetch` et `fetchAll`](#pdostatement--méthodes-fetch-et-fetchall)
     
 
 ## PDO : Présentation
@@ -574,7 +574,7 @@ https://www.php.net/manual/fr/pdo.lastinsertid.php
 
 ---
 
-## PDOStatement Méthodes `fetch` et `fetchAll`
+## PDOStatement : Méthodes `fetch` et `fetchAll`
 
 `fetch` et `fetchAll` sont des méthodes de la classe `PDOStatement` qui permettent de récupérer les résultats d'une requête SQL.
 
