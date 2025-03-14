@@ -11,6 +11,8 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
   - [Connexion PDO avec try/catch](#connexion-pdo-avec-trycatch)
   - [Séparation des données sensibles de la connexion](#séparation-des-données-sensibles-de-la-connexion)
   - [Connexion à la base de données complète](#connexion-à-la-base-de-données-complète)
+    - [Documentation setAttribute](#documentation-setattribute)
+    - [Documentation des connexions permanentes](#documentation-des-connexions-permanentes)
   - [Les méthodes query et exec](#les-méthodes-query-et-exec)
     - [Méthode `query`](#méthode-query)
 
@@ -307,6 +309,24 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 // bonne pratique, fermeture de la connexion
 $db = null;
 ```
+
+#### Documentation setAttribute
+
+https://www.php.net/manual/fr/pdo.setattribute.php
+
+#### Documentation des connexions permanentes
+
+https://www.php.net/manual/fr/pdo.connections.php
+
+```php
+<?php
+$dbh = new PDO('mysql:host=localhost;dbname=test', $user, $pass, array(
+    PDO::ATTR_PERSISTENT => true
+));
+?>
+```
+
+
 
     
 
