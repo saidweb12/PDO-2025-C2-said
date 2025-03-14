@@ -10,7 +10,7 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
 - [PDO : Connexion à la base de données](#pdo--connexion-à-la-base-de-données)
   - [Connexion PDO avec try/catch](#connexion-pdo-avec-trycatch)
   - [Séparation des données sensibles de la connexion](#séparation-des-données-sensibles-de-la-connexion)
-  - 
+  - [Les méthodes query et exec](#les-méthodes-query-et-exec)
 
 ## PDO : Présentation
 
@@ -217,7 +217,19 @@ config-prod.php
 
 ---
 
+### PDO : Connexion à la base de données complète
+
+
+
+---
+
+[Retour au menu](#menu)
+
+---
+
 ### Les méthodes query et exec
+
+
 
 ---
 
