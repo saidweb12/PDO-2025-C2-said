@@ -9,7 +9,7 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
 - [PDO : Fork du dépôt](#pdo--fork-du-dépôt)
 - [PDO : Connexion à la base de données](#pdo--connexion-à-la-base-de-données)
   - [Connexion PDO avec try/catch](#connexion-pdo-avec-trycatch)
-    - [Documentation Gestion des erreurs `PDO`](#documentation-gestion-des-erreurs-pdo)
+    - [Documentation erreurs PDO](#documentation-erreurs-pdo)
   - [Séparation des données sensibles de la connexion](#séparation-des-données-sensibles-de-la-connexion)
   - [Connexion à la base de données complète](#connexion-à-la-base-de-données-complète)
     - [Documentation setAttribute](#documentation-setattribute)
@@ -184,7 +184,7 @@ $db = null;
 
 ```
 
-#### Documentation Gestion des erreurs `PDO` :
+#### Documentation erreurs PDO
 
 https://www.php.net/manual/fr/pdo.error-handling.php
 
