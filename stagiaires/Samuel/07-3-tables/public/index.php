@@ -40,7 +40,8 @@ if(!empty($_GET)) {
     } elseif (isset($_GET['users'])) {
         $users = $db->query("SELECT * FROM `theuser` ORDER BY `theuserlogin` ASC");
         include "../view/users.view.php";
-    }   $users->closeCursor();
+        $users->closeCursor();
+    }   
 
 }else{
     // appel de la vue de l'accueil
