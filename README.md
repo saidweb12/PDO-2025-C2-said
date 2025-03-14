@@ -7,8 +7,8 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
 - [PDO : Installation](#pdo--installation)
 - [PDO : Exemples et exercices](#pdo--exemples-et-exercices)
 - [PDO : Fork du dépôt](#pdo--fork-du-dépôt)
-- [PDO : Connexion à la base de données](#pdo--connexion-à-la-base-de-données)
 - [PDO : Les classes liées à PDO](#pdo--les-classes-liées-à-pdo)
+- [PDO : Connexion à la base de données](#pdo--connexion-à-la-base-de-données)
   - [Connexion PDO avec try/catch](#connexion-pdo-avec-trycatch)
     - [Documentation erreurs PDO](#documentation-erreurs-pdo)
     - [Documentation sur les constantes PDO](#documentation-sur-les-constantes-pdo)
@@ -101,6 +101,28 @@ https://github.com/WebDevCF2m2025/PDO-2025-C2
 
 ---
 
+## PDO : Les classes liées à PDO
+
+Les 3 classes principales de PDO sont :
+
+- `PDO` : classe principale qui permet de se connecter à une base de données.
+
+https://www.php.net/manual/fr/class.pdo.php
+
+- `PDOStatement` : classe qui permet de représenter une requête SQL préparée.
+
+https://www.php.net/manual/fr/class.pdostatement.php
+
+- `PDOException` : classe qui permet de représenter une erreur PDO.
+
+https://www.php.net/manual/fr/class.pdoexception.php
+
+---
+
+[Retour au menu](#menu)
+
+---
+
 ## PDO : Connexion à la base de données
 
 Pour se connecter à une base de données, il faut utiliser la classe `PDO` et lui passer en paramètre les informations de connexion à la base de données. On utilise le mot-clé `new` pour **instancier** un **objet** de la **classe** `PDO` :
@@ -143,27 +165,7 @@ Pour la suite de la partie théorie de ce cours, j'ai créé un .pdf que vous po
 
 ---
 
-## PDO : Les classes liées à PDO
 
-Les 3 classes principales de PDO sont :
-
-- `PDO` : classe principale qui permet de se connecter à une base de données.
-
-https://www.php.net/manual/fr/class.pdo.php
-
-- `PDOStatement` : classe qui permet de représenter une requête SQL préparée.
-
-https://www.php.net/manual/fr/class.pdostatement.php
-
-- `PDOException` : classe qui permet de représenter une erreur PDO.
-
-https://www.php.net/manual/fr/class.pdoexception.php
-
----
-
-[Retour au menu](#menu)
-
----
 
 ### Connexion PDO avec try/catch
 
