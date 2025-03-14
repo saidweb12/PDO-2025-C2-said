@@ -6,9 +6,10 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
 - [PDO : Présentation](#pdo--présentation)
 - [PDO : Installation](#pdo--installation)
 - [PDO : Exemples et exercices](#pdo--exemples-et-exercices)
-- [Fork du dépôt](#fork-du-dépôt)
+- [PDO : Fork du dépôt](#pdo--fork-du-dépôt)
 - [PDO : Connexion à la base de données](#pdo--connexion-à-la-base-de-données)
   - [Connexion PDO avec try/catch](#connexion-pdo-avec-trycatch)
+    - [Documentation Gestion des erreurs `PDO`](#documentation-gestion-des-erreurs-pdo)
   - [Séparation des données sensibles de la connexion](#séparation-des-données-sensibles-de-la-connexion)
   - [Connexion à la base de données complète](#connexion-à-la-base-de-données-complète)
     - [Documentation setAttribute](#documentation-setattribute)
@@ -69,7 +70,7 @@ Ouvrez PHPMyAdmin, sélectionnez `MySQL` et importez la base de données `pdo_c2
 
 ---
 
-## Fork du dépôt
+## PDO : Fork du dépôt
 
 Créez un fork de ce dépôt sur Github : 
 
@@ -183,7 +184,7 @@ $db = null;
 
 ```
 
-Gestion des erreurs `PDO` :
+#### Documentation Gestion des erreurs `PDO` :
 
 https://www.php.net/manual/fr/pdo.error-handling.php
 
