@@ -10,6 +10,7 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
 - [PDO : Connexion à la base de données](#pdo--connexion-à-la-base-de-données)
   - [Connexion PDO avec try/catch](#connexion-pdo-avec-trycatch)
   - [Séparation des données sensibles de la connexion](#séparation-des-données-sensibles-de-la-connexion)
+  - [Connexion à la base de données complète](#connexion-à-la-base-de-données-complète)
   - [Les méthodes query et exec](#les-méthodes-query-et-exec)
 
 ## PDO : Présentation
@@ -191,10 +192,32 @@ Nous allons séparer les données de la connexion, et les rajouter dans un autre
 
 Le fichier de production ne sera pas mis sur github, gràce au `.gitignore`.
 
+Création du fichier de configuration de production `config-prod.php` :
+
 ```php
 <?php
 # config-prod.php
 # fichier de configuration de PDO en mode production
+# données sensibles !
+# constantes de connexion à la base de données
+# à modifier vers votre environnement de production
+# et votre base de données online
+const DB_CONNECT_TYPE = "mysql"; // MySQL et MariaDB
+const DB_CONNECT_HOST = "localhost";
+const DB_CONNECT_PORT = 3306;
+const DB_CONNECT_NAME = "pdo_c2";
+const DB_CONNECT_CHARSET = "utf8";
+const DB_CONNECT_USER = "root";
+const DB_CONNECT_PWD = "";
+```
+
+On peut en avoir une copie pour le travail en développement `config-dev.php` :
+
+```php
+<?php
+# config-dev.php
+# fichier de configuration de PDO en mode développement.
+# Ce fichier peut être sur github car il ne contient pas de données sensibles
 const DB_CONNECT_TYPE = "mysql"; // MySQL et MariaDB
 const DB_CONNECT_HOST = "localhost";
 const DB_CONNECT_PORT = 3306;
@@ -211,15 +234,68 @@ Création du `.gitignore`:
 config-prod.php
 ```
 
+Pour ce qui est du fichier de connexion de développement, on va inclure le fichier de configuration :
+
+```php
+<?php
+require_once "config-dev.php";
+```
+
 ---
 
 [Retour au menu](#menu)
 
 ---
 
-### PDO : Connexion à la base de données complète
+### Connexion à la base de données complète
 
+On va inclure le fichier de configuration dans notre fichier de connexion :
 
+```php
+<?php
+# index.php
+
+# inclusion du fichier de configuration
+require_once "config-dev.php";
+```
+
+Ensuite on va se connecter à la base de données en utilisant les constantes :
+
+```php
+<?php
+# index.php
+
+try{
+
+    $db = new PDO(
+        dsn:DB_CONNECT_TYPE.
+        ":host=".DB_CONNECT_HOST.
+        ";port=".DB_CONNECT_PORT.
+        ";dbname=".DB_CONNECT_NAME.
+        ";charset=".DB_CONNECT_CHARSET
+        , // paramètres de connexion à la DB
+        username: DB_CONNECT_USER, // login
+        password: DB_CONNECT_PWD, // mot passe
+        // options (tableau associatif) non obligatoire
+        options:[
+            // activation des erreurs (inutile depuis 7.4)
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            // on va définir le fetch mode en tableau associatif
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ],
+    );
+
+// si erreur : $e = new Exception(...)
+}catch (Exception $e){
+    // arrêt du script avec affichage de l'erreur
+    die($e->getMessage());
+}
+
+// bonne pratique, fermeture de la connexion
+$db = null;
+```
+
+    
 
 ---
 
