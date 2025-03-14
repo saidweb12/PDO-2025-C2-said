@@ -249,7 +249,7 @@ require_once "config-dev.php";
 
 ### Connexion à la base de données complète
 
-On va inclure le fichier de configuration dans notre fichier de connexion :
+On va inclure le fichier de configuration dans notre fichier de connexion et on va se connecter à la base de données en utilisant les constantes :
 
 ```php
 <?php
@@ -257,27 +257,31 @@ On va inclure le fichier de configuration dans notre fichier de connexion :
 
 # inclusion du fichier de configuration
 require_once "config-dev.php";
-```
-
-Ensuite on va se connecter à la base de données en utilisant les constantes :
-
-```php
-<?php
-# index.php
 
 try{
 
     $db = new PDO(
-        dsn:DB_CONNECT_TYPE.
+    
+        // paramètres de connexion à la DB
+        DB_CONNECT_TYPE.
         ":host=".DB_CONNECT_HOST.
         ";port=".DB_CONNECT_PORT.
         ";dbname=".DB_CONNECT_NAME.
         ";charset=".DB_CONNECT_CHARSET
-        , // paramètres de connexion à la DB
-        username: DB_CONNECT_USER, // login
-        password: DB_CONNECT_PWD, // mot passe
+        , 
+        // login
+        DB_CONNECT_USER, 
+        
+        // mot passe
+        DB_CONNECT_PWD, 
+        
         // options (tableau associatif) non obligatoire
-        options:[
+        // peut être remplacé par des setAttribute
+        // https://www.php.net/manual/fr/pdo.setattribute.php
+        // sauf pour la connexion permanente
+        // qui devrait être déclarée dans ce tableau
+        // (voir le pdf)
+        [
             // activation des erreurs (inutile depuis 7.4)
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             // on va définir le fetch mode en tableau associatif
