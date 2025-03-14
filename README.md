@@ -16,6 +16,9 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
     - [Documentation des connexions permanentes](#documentation-des-connexions-permanentes)
 - [PDO : Les méthodes query et exec](#pdo--les-méthodes-query-et-exec)
   - [Méthode `query`](#méthode-query)
+    - [Documentation sur `query`](#documentation-sur-query)
+    - [Documentation sur le `closeCursor`](#documentation-sur-le-closecursor)
+    - [Documentation sur `rowCount`](#documentation-sur-rowcount)
 
 ## PDO : Présentation
 
@@ -372,7 +375,9 @@ require_once "config-dev.php";
 
     // récupération des résultats (tableau associatif),
     // on peut utiliser fetch() pour récupérer un seul résultat
-    // Le PDO::FETCH_ASSOC peut déja être défini dans les options de connexion
+    // Le PDO::FETCH_ASSOC peut déja être défini dans les options de
+    // connexion, le fetchAll crée un tableau indexé 
+    // contenant des tableaux associatifs comme résultats
     $results = $query->fetchAll(PDO::FETCH_ASSOC);
 
     // etc ...
@@ -390,6 +395,50 @@ require_once "config-dev.php";
 
 ```
 
+---
+
+[Retour au menu](#menu)
+
+---
+
+#### Documentation sur `query`
+
+PDO::query() prépare et exécute une requête SQL en un seul appel de fonction, retournant la requête en tant qu'objet PDOStatement.
+
+https://www.php.net/manual/fr/pdo.query.php
+
+---
+
+[Retour au menu](#menu)
+
+---
+
+#### Documentation sur le `closeCursor`
+
+PDOStatement::closeCursor() libère la connexion au serveur, permettant ainsi à d'autres requêtes SQL d'être exécutées, mais laisse la requête dans un état lui permettant d'être de nouveau exécutée.
+
+Ne fonctionne pas avec tous les drivers de base de données, mais reste une bonne pratique.
+
+https://www.php.net/manual/fr/pdostatement.closecursor.php
+
+
+
+---
+
+[Retour au menu](#menu)
+
+---
+
+#### Documentation sur `rowCount`
+
+https://www.php.net/manual/fr/pdostatement.rowcount.php
+
+On peut connaitre le nombre de lignes retournées par la requête en utilisant la méthode `rowCount` :
+
+```php
+// nombre de lignes retournées
+$nbRows = $query->rowCount();
+```
 
 ---
 
