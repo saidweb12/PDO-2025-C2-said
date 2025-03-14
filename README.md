@@ -5,6 +5,7 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
 
 - [PDO : Présentation](#pdo--présentation)
 - [PDO : Installation](#pdo--installation)
+- [PDO : liste des SGBD supportés](#pdo--liste-des-sgbd-supportés)
 - [PDO : Exemples et exercices](#pdo--exemples-et-exercices)
 - [PDO : Fork du dépôt](#pdo--fork-du-dépôt)
 - [PDO : Les classes liées à PDO](#pdo--les-classes-liées-à-pdo)
@@ -67,6 +68,29 @@ PDO est généralement installé par défaut avec PHP.
 
 ---
 
+## PDO : liste des SGBD supportés
+
+Voici la liste des pilotes de base de données supportés par PDO :
+
+- `CUBRID` : Pilote CUBRID
+- `MS SQL Server` : Pilote Microsoft SQL Server et Sybase
+- `Firebird` : Pilote Firebird et Interbase
+- `IBM` : Pilote IBM
+- `Informix` : Pilote Informix
+- `MySQL` : Pilote MySQL et MariaDB
+- `Oracle` : Pilote Oracle
+- `ODBC` : Pilote ODBC
+- `PgSQL` : Pilote PostgreSQL
+- `SQLite` : Pilote SQLite 3 et SQLite 2
+- `4D` : Pilote 4D
+- `FreeTDS` : Pilote FreeTDS/Sybase
+- `ODBC et DB2` : Pilote ODBC et DB2 (IBM)
+- `ODBC et Firebird` : Pilote ODBC et Firebird
+- `ODBC et Informix` : Pilote ODBC et Informix
+- ... et bien d'autres
+
+https://www.php.net/manual/fr/pdo.drivers.php
+
 
 ## PDO : Exemples et exercices
 
@@ -116,6 +140,8 @@ https://www.php.net/manual/fr/class.pdostatement.php
 - `PDOException` : classe qui permet de représenter une erreur PDO.
 
 https://www.php.net/manual/fr/class.pdoexception.php
+
+Il existe également la classe `PDORow` qui représente une ligne d'un jeu de résultats retourné par `PDOStatement::fetch()` appelé avec le mode de récupération `PDO_FETCH_LAZY`.
 
 ---
 
