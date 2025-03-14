@@ -20,6 +20,9 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
     - [Documentation sur le `closeCursor`](#documentation-sur-le-closecursor)
     - [Documentation sur `rowCount`](#documentation-sur-rowcount)
   - [Méthode `exec`](#méthode-exec)
+    - [Documentation sur `exec`](#documentation-sur-exec)
+    - [Documentation sur  `lastInsertId`](#documentation-sur--lastinsertid)
+    
 
 ## PDO : Présentation
 
@@ -404,7 +407,7 @@ require_once "config-dev.php";
 
 #### Documentation sur `query`
 
-PDO::query() prépare et exécute une requête SQL en un seul appel de fonction, retournant la requête en tant qu'objet PDOStatement.
+`PDO::query()` prépare et exécute une requête SQL en un seul appel de fonction, retournant la requête en tant qu'objet PDOStatement.
 
 https://www.php.net/manual/fr/pdo.query.php
 
@@ -416,7 +419,7 @@ https://www.php.net/manual/fr/pdo.query.php
 
 #### Documentation sur le `closeCursor`
 
-PDOStatement::closeCursor() libère la connexion au serveur, permettant ainsi à d'autres requêtes SQL d'être exécutées, mais laisse la requête dans un état lui permettant d'être de nouveau exécutée.
+`PDOStatement::closeCursor()` libère la connexion au serveur, permettant ainsi à d'autres requêtes SQL d'être exécutées, mais laisse la requête dans un état lui permettant d'être de nouveau exécutée.
 
 Ne fonctionne pas avec tous les drivers de base de données, mais reste une bonne pratique.
 
@@ -449,9 +452,12 @@ $nbRows = $query->rowCount();
 
 ### Méthode `exec`
 
-La méthode `exec` permet d'exécuter une requête SQL de type `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, etc. Elle retourne le nombre de lignes affectées par la requête.
+La méthode `PDO::exec` permet d'exécuter une requête SQL de type `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, etc. Elle retourne le nombre de lignes affectées par la requête.
 
 Attention, cette méthode ne permet pas d'exécuter des requêtes préparées, donc **attention aux injections SQL**.
+
+
+Exemple avec un `INSERT` :
 
 ```php
 <?php
@@ -468,6 +474,38 @@ require_once "config-dev.php";
 
     // Exécution de la requête SQL 
     $nbRows = $db->exec($sql);
+    
+    // Récupération de l'id de la dernière ligne insérée
+    $lastId = $db->lastInsertId();
+
+    // etc ...
+
+    # on peut connaître le nombre de lignes affectées
+    # via la variable de retour d'exec
+    echo "$nbRows ligne insérée, dernier id : $lastId";
+
+    // fermeture de la connexion
+    $db = null;
+
+```
+
+Exemple avec un `UPDATE` :
+
+```php
+<?php
+# index.php
+
+# inclusion du fichier de configuration
+require_once "config-dev.php";
+
+# connexion voir à "Connexion à la base de données complète"
+# ...
+
+    // requête SQL sans entrées de l'utilisateur
+    $sql = "UPDATE `table` SET `col1` = 'val1' WHERE `id` > 5 ";
+
+    // Exécution de la requête SQL 
+    $nbRows = $db->exec($sql);
 
     // etc ...
 
@@ -477,7 +515,6 @@ require_once "config-dev.php";
 
     // fermeture de la connexion
     $db = null;
-
 ```
 
 ---
@@ -488,9 +525,23 @@ require_once "config-dev.php";
 
 #### Documentation sur `exec`
 
-PDO::exec() exécute une instruction SQL et retourne le nombre de lignes affectées.
+`PDO::exec()` exécute une instruction SQL et retourne le nombre de lignes affectées.
 
 https://www.php.net/manual/fr/pdo.exec.php
+
+---
+
+[Retour au menu](#menu)
+
+---
+
+#### Documentation sur  `lastInsertId`
+
+`PDO::lastInsertId()` retourne l'identifiant de la dernière ligne insérée ou la valeur d'une séquence, selon la méthode utilisée pour générer la valeur de la colonne.
+
+C'est très utile pour récupérer l'id d'une ligne insérée dans une table avec un auto-increment et de l'utiliser dans une autre table (pour les jointures par exemple).
+
+https://www.php.net/manual/fr/pdo.lastinsertid.php
 
 ---
 
