@@ -148,8 +148,16 @@ Pour la suite de la partie théorie de ce cours, j'ai créé un .pdf que vous po
 Les 3 classes principales de PDO sont :
 
 - `PDO` : classe principale qui permet de se connecter à une base de données.
+
+https://www.php.net/manual/fr/class.pdo.php
+
 - `PDOStatement` : classe qui permet de représenter une requête SQL préparée.
+
+https://www.php.net/manual/fr/class.pdostatement.php
+
 - `PDOException` : classe qui permet de représenter une erreur PDO.
+
+https://www.php.net/manual/fr/class.pdoexception.php
 
 ---
 
