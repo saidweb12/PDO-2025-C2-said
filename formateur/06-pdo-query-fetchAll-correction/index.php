@@ -47,7 +47,7 @@ try{
 ");*/
 $request = $db->query("
     SELECT a.thearticletitle, a.thearticletext, a.thearticledate,
-           u.theusername a
+           u.theusername
     FROM thearticle a -- alias => thearticle = a
     INNER JOIN theuser u -- alias => theuser = u
         ON u.idtheuser = a.theuser_idtheuser
