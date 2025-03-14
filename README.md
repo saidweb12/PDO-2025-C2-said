@@ -13,8 +13,8 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
   - [Connexion à la base de données complète](#connexion-à-la-base-de-données-complète)
     - [Documentation setAttribute](#documentation-setattribute)
     - [Documentation des connexions permanentes](#documentation-des-connexions-permanentes)
-  - [Les méthodes query et exec](#les-méthodes-query-et-exec)
-    - [Méthode `query`](#méthode-query)
+- [PDO : Les méthodes query et exec](#pdo--les-méthodes-query-et-exec)
+  - [Méthode `query`](#méthode-query)
 
 ## PDO : Présentation
 
@@ -325,9 +325,6 @@ $dbh = new PDO('mysql:host=localhost;dbname=test', $user, $pass, array(
 ));
 ?>
 ```
-
-
-
     
 
 ---
@@ -336,7 +333,7 @@ $dbh = new PDO('mysql:host=localhost;dbname=test', $user, $pass, array(
 
 ---
 
-### Les méthodes query et exec
+## PDO : Les méthodes query et exec
 
 `query` et `exec` sont des méthodes de la classe `PDO` qui permettent d'exécuter des requêtes SQL non préparées.
 
@@ -352,7 +349,7 @@ Ces méthodes retournent un objet de type `PDOStatement` qui contient les résul
 
 ---
 
-#### Méthode `query`
+### Méthode `query`
 
 La méthode `query` permet d'exécuter une requête SQL de type `SELECT` et de récupérer les résultats lorsqu'il y en a. Attention, cette méthode ne permet pas d'exécuter des requêtes préparées.
 
@@ -366,7 +363,7 @@ require_once "config-dev.php";
 # connexion voir à "Connexion à la base de données complète"
 # ...
 
-    // requête SQL sans entrées utilisateur
+    // requête SQL sans entrées de l'utilisateur
     $sql = "SELECT * FROM `table`";
 
     // Exécution de la requête SQL 
