@@ -21,7 +21,8 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
     - [Documentation sur `rowCount`](#documentation-sur-rowcount)
   - [Méthode `exec`](#méthode-exec)
     - [Documentation sur `exec`](#documentation-sur-exec)
-    - [Documentation sur  `lastInsertId`](#documentation-sur--lastinsertid)
+    - [Documentation sur `lastInsertId`](#documentation-sur-lastinsertid)
+  - [Méthodes `fetch` et `fetchAll`](#méthodes-fetch-et-fetchall)
     
 
 ## PDO : Présentation
@@ -527,6 +528,8 @@ require_once "config-dev.php";
 
 `PDO::exec()` exécute une instruction SQL et retourne le nombre de lignes affectées.
 
+**Nous éviterons de les utiliser** quand il y a des risques d'**injections SQL**, donc des entrées d'un utilisateur, nous verrons plus tard comment les éviter.
+
 https://www.php.net/manual/fr/pdo.exec.php
 
 ---
@@ -535,13 +538,27 @@ https://www.php.net/manual/fr/pdo.exec.php
 
 ---
 
-#### Documentation sur  `lastInsertId`
+#### Documentation sur `lastInsertId`
 
 `PDO::lastInsertId()` retourne l'identifiant de la dernière ligne insérée ou la valeur d'une séquence, selon la méthode utilisée pour générer la valeur de la colonne.
 
 C'est très utile pour récupérer l'id d'une ligne insérée dans une table avec un auto-increment et de l'utiliser dans une autre table (pour les jointures par exemple).
 
 https://www.php.net/manual/fr/pdo.lastinsertid.php
+
+---
+
+[Retour au menu](#menu)
+
+---
+
+### Méthodes `fetch` et `fetchAll`
+
+`fetch` et `fetchAll` sont des méthodes de la classe `PDOStatement` qui permettent de récupérer les résultats d'une requête SQL.
+
+`fetch` permet de récupérer une seule ligne de résultat, alors que `fetchAll` permet de récupérer toutes les lignes de résultat.
+
+`fetch` retourne un tableau associatif, un tableau indexé ou un objet selon le mode de récupération défini, alors que `fetchAll` retourne un tableau indexé contenant des tableaux associatifs, des tableaux indexés ou des objets selon le mode de récupération défini.
 
 ---
 
