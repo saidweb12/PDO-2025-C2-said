@@ -8,8 +8,10 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
 - [PDO : Exemples et exercices](#pdo--exemples-et-exercices)
 - [PDO : Fork du dépôt](#pdo--fork-du-dépôt)
 - [PDO : Connexion à la base de données](#pdo--connexion-à-la-base-de-données)
+- [PDO : Les classes liées à PDO](#pdo--les-classes-liées-à-pdo)
   - [Connexion PDO avec try/catch](#connexion-pdo-avec-trycatch)
     - [Documentation erreurs PDO](#documentation-erreurs-pdo)
+    - [Documentation sur les constantes PDO](#documentation-sur-les-constantes-pdo)
   - [Séparation des données sensibles de la connexion](#séparation-des-données-sensibles-de-la-connexion)
   - [Connexion à la base de données complète](#connexion-à-la-base-de-données-complète)
     - [Documentation setAttribute](#documentation-setattribute)
@@ -131,7 +133,23 @@ $results = null;
 $pdo = null;
 ``` 
 
+
+
 Pour la suite de la partie théorie de ce cours, j'ai créé un .pdf que vous pouvez télécharger [ici](https://github.com/WebDevCF2m2025/PDO-2025-C1/blob/main/datas/PDO-2025.pdf).
+
+---
+
+[Retour au menu](#menu)
+
+---
+
+## PDO : Les classes liées à PDO
+
+Les 3 classes principales de PDO sont :
+
+- `PDO` : classe principale qui permet de se connecter à une base de données.
+- `PDOStatement` : classe qui permet de représenter une requête SQL préparée.
+- `PDOException` : classe qui permet de représenter une erreur PDO.
 
 ---
 
@@ -195,6 +213,10 @@ $db = null;
 #### Documentation erreurs PDO
 
 https://www.php.net/manual/fr/pdo.error-handling.php
+
+#### Documentation sur les constantes PDO
+
+https://www.php.net/manual/fr/pdo.constants.php
 
 ---
 
@@ -552,7 +574,7 @@ https://www.php.net/manual/fr/pdo.lastinsertid.php
 
 ---
 
-### Méthodes `fetch` et `fetchAll`
+## PDOStatement Méthodes `fetch` et `fetchAll`
 
 `fetch` et `fetchAll` sont des méthodes de la classe `PDOStatement` qui permettent de récupérer les résultats d'une requête SQL.
 
