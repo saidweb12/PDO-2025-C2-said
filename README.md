@@ -94,9 +94,13 @@ https://www.php.net/manual/fr/pdo.drivers.php
 
 ## PDO : Exemples et exercices
 
-Nous allons maintenant mettre en pratique ce que nous avons vu dans la partie théorique. N'oubliez pas de créer un dossier à votre nom dans `stagiaires` et d'y mettre vos fichiers.
+Nous mettrons en pratique ce que nous verrons dans la partie théorique. N'oubliez pas de créer un dossier à votre nom dans `stagiaires` et d'y mettre vos fichiers.
 
 Ouvrez PHPMyAdmin, sélectionnez `MySQL` et importez la base de données `pdo_c2.sql` qui se trouve dans le dossier `datas` de ce dépôt.
+
+Vous trouverez les fichiers formateurs dans le dossier `formateur`.
+
+Des exercices progressifs vous y seront proposés.
 
 ---
 
@@ -116,7 +120,7 @@ https://github.com/WebDevCF2m2025/PDO-2025-C2
 - Création de l'**upstream** pour renvoyer le projet via des **pull request** :
 `git remote add upstream SSH_KEY`
 - **Pull** de la branche **main** de **upstream** pour avoir les dernières modifications : `git pull upstream main`
-- Ne travaillez que dans votre dossier (stagiaires/NomDuStagiaire)
+- Ne travaillez **que dans votre dossier (stagiaires/NomDuStagiaire)**
 - Travaillez sur votre branche : `git checkout -b NomDeLaBranche`, pas sur la `main`
 
 ---
