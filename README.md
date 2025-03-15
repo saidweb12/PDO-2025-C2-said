@@ -26,6 +26,8 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
     - [Documentation sur `exec`](#documentation-sur-exec)
     - [Documentation sur `lastInsertId`](#documentation-sur-lastinsertid)
 - [PDOStatement : Méthodes `fetch` et `fetchAll`](#pdostatement--méthodes-fetch-et-fetchall)
+  - [Méthode `fetch`](#méthode-fetch)
+  
     
 
 ## PDO : Présentation
@@ -621,6 +623,74 @@ https://www.php.net/manual/fr/pdo.lastinsertid.php
 `fetch` permet de récupérer une seule ligne de résultat, alors que `fetchAll` permet de récupérer toutes les lignes de résultat.
 
 `fetch` retourne un tableau associatif, un tableau indexé ou un objet selon le mode de récupération défini, alors que `fetchAll` retourne un tableau indexé contenant des tableaux associatifs, des tableaux indexés ou des objets selon le mode de récupération défini.
+
+---
+
+[Retour au menu](#menu)
+
+---
+
+### Méthode `fetch`
+
+La méthode `fetch` permet de récupérer une seule ligne de résultat de la requête SQL. Elle retourne un tableau associatif, un tableau indexé ou un objet selon le mode de récupération défini.
+
+On peut utiliser `fetch` pour récupérer un seul résultat, et `fetchAll` pour récupérer tous les résultats.
+
+L'utilisation du `fetch` avec un `while` permet de parcourir tous les résultats de la requête (donc plusieurs résultats, appréciée par les `IA` et les newbies... cette méthode étant très ancienne), **mais n'est pas une bonne pratique**, nous le verrons dans le dossier cependant dans les premiers fichiers du dossier `formateur`.
+
+```php
+<?php
+# index.php
+
+# inclusion du fichier de configuration
+require_once "config-dev.php";
+
+# connexion voir à "Connexion à la base de données complète"
+
+# requête SQL sans entrées de l'utilisateur
+# on récupère 1 seul résultat, ou 0 si aucun résultat
+$sql = "SELECT * FROM `users` WHERE `login` = 'admin'";
+
+$query = $db->query($sql);
+
+// si on a un résultat
+if($query->rowCount() > 0){
+    // on récupère le résultat sous forme de tableau associatif
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+}else{
+    // sinon, on affiche un message d'erreur
+    $result = "Aucun résultat";
+}
+
+# bonnes pratiques
+
+// fermeture de la requête
+$query->closeCursor();
+
+// fermeture de la connexion
+$db = null;
+
+// puis dans la vue (pour le moment le même fichier)
+?>
+<!doctype html>
+<html lang="en">
+<!-- ... -->
+<?php
+// si on a un résultat sous forme de tableau
+if(is_array($result)):
+?>
+<h3>Utilisateur : <?= $result['login'] ?></h3>
+<?php
+// sinon on affiche le message d'erreur (qui est une chaîne)
+else:
+ ?>
+ <h3><?= $result ?></h3>
+ <?php
+endif;
+ ?>
+</body>
+</html>
+```
 
 ---
 
