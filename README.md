@@ -93,6 +93,11 @@ Voici la liste des pilotes de base de données supportés par PDO :
 
 https://www.php.net/manual/fr/pdo.drivers.php
 
+---
+
+[Retour au menu](#menu)
+
+---
 
 ## PDO : Exemples et exercices
 
