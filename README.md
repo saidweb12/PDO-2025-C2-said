@@ -27,6 +27,8 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
     - [Documentation sur `lastInsertId`](#documentation-sur-lastinsertid)
 - [PDOStatement : Méthodes `fetch` et `fetchAll`](#pdostatement--méthodes-fetch-et-fetchall)
   - [Méthode `fetch`](#méthode-fetch)
+  - - [Documentation sur `fetch`](#documentation-sur-fetch)
+  - [Méthode `fetchAll`](#méthode-fetchall)
   
     
 
@@ -696,6 +698,99 @@ endif;
 </body>
 </html>
 ```
+
+---
+
+[Retour au menu](#menu)
+
+---
+
+#### Documentation sur `fetch`
+
+`PDOStatement::fetch()` récupère la ligne suivante d'un jeu de résultats PDOStatement.
+
+https://www.php.net/manual/fr/pdostatement.fetch.php
+
+---
+
+[Retour au menu](#menu)
+
+---
+
+### Méthode `fetchAll`
+
+La méthode `fetchAll` permet de récupérer toutes les lignes de résultat de la requête SQL. Elle retourne un tableau indexé contenant des tableaux associatifs, des tableaux indexés ou des objets selon le mode de récupération défini.
+
+
+```php
+<?php
+# index.php
+
+# inclusion du fichier de configuration
+require_once "config-dev.php";
+
+# connexion voir à "Connexion à la base de données complète"
+
+# requête SQL sans entrées de l'utilisateur
+$sql = "SELECT * FROM `users`";
+
+$query = $db->query($sql);
+
+// si on a des résultats
+if($query->rowCount() > 0){
+    // on récupère tous les résultats sous forme de tableau associatif
+    $results = $query->fetchAll(PDO::FETCH_ASSOC);
+}else{
+    // sinon, on affiche un message d'erreur
+    $results = "Pas encore de résultats";
+}
+
+# bonnes pratiques
+
+// fermeture de la requête
+$query->closeCursor();
+
+// fermeture de la connexion
+$db = null;
+
+// appel de la vue
+include "views/index.view.php";
+```
+
+On utilise ensuite la vue `index.view.php` pour afficher les résultats, on peut utiliser une boucle `foreach` pour ça :
+
+
+```php
+<!doctype html>
+<html lang="en">
+<!-- ... -->
+<?php
+// si on a des résultats sous forme de tableau
+if(is_array($results)):
+?>
+<h3>Liste des utilisateurs</h3>
+<ul>
+<?php
+// on parcourt les résultats
+foreach($results as $result):
+?>
+<li><?= $result['login'] ?></li>
+<?php
+endforeach;
+?>
+</ul>
+<?php
+// sinon on affiche le message d'erreur (qui est une chaîne)
+else:
+ ?>
+ <h3><?= $results ?></h3>
+ <?php
+endif;
+    ?>
+</body>
+</html>
+```
+
 
 ---
 
