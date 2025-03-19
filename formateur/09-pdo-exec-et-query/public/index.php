@@ -1,6 +1,6 @@
 <?php
 # Contrôleur frontal
-
+require_once "../config-prod.php"; // Appelle le fichier de configuration "config-prod.php" une seule fois
 # Appelle le fichier de configuration "config-prod.php" une seule fois
 
 # Utilisation d'un try/catch pour gérer les exceptions
