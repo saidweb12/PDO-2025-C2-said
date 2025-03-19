@@ -5,4 +5,5 @@
 - Copiez le dossier `formateur/09-pdo-exec-et-query` dans votre dossier de travail
 - Travaillez sur une nouvelle branche `exercice-9`
 - Créez le fichier `.gitignore` et mettez-y le fichier `config-prod.php` pour ne pas le versionner
-- Dupliquez le fichier `config-dev.php` en `config-prod.php`
+- Dupliquez le fichier `config-dev.php` en `config-prod.php` (les valeurs sont les bonnes pour travailler en local)
+- Suivez les instructions du fichier `public/index.php` pour créer des pages qui insert, modifie et affiche des données
