@@ -643,7 +643,7 @@ La méthode `fetch` permet de récupérer une seule ligne de résultat de la req
 
 On peut utiliser `fetch` pour récupérer un seul résultat, et `fetchAll` pour récupérer tous les résultats.
 
-L'utilisation du `fetch` avec un `while` permet de parcourir tous les résultats de la requête (donc plusieurs résultats, appréciée par les `IA` et les newbies... cette méthode étant très ancienne), **mais n'est pas une bonne pratique**, nous le verrons dans le dossier cependant dans les premiers fichiers du dossier `formateur`.
+L'utilisation du `fetch` avec un `while` permet de parcourir tous les résultats de la requête (donc plusieurs résultats, appréciée par les `IA` et les newbies... cette méthode étant très ancienne), **mais n'est pas une bonne pratique**, *sauf dans le cas de quantités de données gigantesques, où cette méthode prend moins de mémoire et va un peu plus vite*, nous le verrons dans le dossier cependant dans les premiers fichiers du dossier `formateur`.
 
 ```php
 <?php
