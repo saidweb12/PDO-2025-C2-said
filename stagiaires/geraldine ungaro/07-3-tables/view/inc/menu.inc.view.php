@@ -4,3 +4,5 @@
     <a href="./?users">Tous les utilisateurs</a> |
     <a href="./?rubriques">Toutes nos sections</a> |
 </nav>
+<?php
+
