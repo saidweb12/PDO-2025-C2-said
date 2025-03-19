@@ -23,7 +23,7 @@ $myBDD2 = $myBDD;
 
 $myBDD3 = new PDO(
     # dsn -> paramètres de connexion à la DB pdo_c2
-    'mysql:host=localhost;dbname=ecole;port=3306;charset=utf8',
+    'mysql:host=localhost;dbname=pdo_c2;port=3306;charset=utf8',
     # username -> login
     'root', 
     #password -> password
@@ -64,4 +64,45 @@ try{
 
 var_dump($db);
 
-$db = null;
+//$db = null;
+
+require_once "config_pdo_c2.php";
+
+try{
+
+    $db2 = new PDO(
+
+    // paramètres de connexion à la DB
+        DB_CONNECT_TYPE.
+        ":host=".DB_CONNECT_HOST.
+        ";port=".DB_CONNECT_PORT.
+        ";dbname=".DB_CONNECT_NAME.
+        ";charset=".DB_CONNECT_CHARSET
+        ,
+        // login
+        DB_CONNECT_USER,
+
+        // mot passe
+        DB_CONNECT_PWD,
+
+        // options (tableau associatif) non obligatoire
+        // peut être remplacé par des setAttribute
+        // https://www.php.net/manual/fr/pdo.setattribute.php
+        // sauf pour la connexion permanente
+        // qui devrait être déclarée dans ce tableau
+        // (voir le pdf)
+        [
+            // activation des erreurs (inutile depuis 7.4)
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            // on va définir le fetch mode en tableau associatif
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ],
+    );
+
+// si erreur : $e = new Exception(...)
+}catch (Exception $e){
+    // arrêt du script avec affichage de l'erreur
+    die($e->getMessage());
+}
+
+var_dump($db2);
