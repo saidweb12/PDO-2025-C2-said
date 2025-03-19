@@ -17,6 +17,10 @@ if(isset($_GET["articles"])) {
     
     echo "je suis sur users";
 
+}elseif(isset($_GET['rubrique'])){
+    
+    echo "je suis sur rubrique";
+
 
 
 
