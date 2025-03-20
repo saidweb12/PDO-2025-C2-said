@@ -8,14 +8,14 @@ Les requêtes doivent se trouver dans public/index.php ou un autre fichier dédi
 
 votreNom/07-3-tables/view/accueil.view.php
 
-  `./?articles`
+`./?articles`
 
 votreNom/07-3-tables/view/articles.view.php
 
-  `./?users`
+`./?rubriques`
 
 votreNom/07-3-tables/view/rubriques.view.php
 
-  `./?rubriques`
+`./?users`
 
 votreNom/07-3-tables/view/users.view.php

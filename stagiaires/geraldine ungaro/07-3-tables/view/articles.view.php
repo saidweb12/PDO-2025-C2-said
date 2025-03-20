@@ -14,8 +14,16 @@
 <?php
 include "inc/menu.inc.view.php";
 ?>
-<h1>Nos 30 derniers articles</h1>
+<h1>Nos <?$queryArticle?></h1>
+
+<?php
+foreach($articles as $article):
+?>
 <p>Par date desc</p>
+<?= $article['thearticletitle'] ?></li>
+<?php
+endforeach;
+?>
 
 </body>
 </html>
