@@ -17,18 +17,21 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
   - [Connexion à la base de données complète](#connexion-à-la-base-de-données-complète)
     - [Documentation setAttribute](#documentation-setattribute)
     - [Documentation des connexions permanentes](#documentation-des-connexions-permanentes)
-- [PDO : Les méthodes query et exec](#pdo--les-méthodes-query-et-exec)
-  - [Méthode `query`](#méthode-query)
-    - [Documentation sur `query`](#documentation-sur-query)
-    - [Documentation sur le `closeCursor`](#documentation-sur-le-closecursor)
-    - [Documentation sur `rowCount`](#documentation-sur-rowcount)
-  - [Méthode `exec`](#méthode-exec)
-    - [Documentation sur `exec`](#documentation-sur-exec)
-    - [Documentation sur `lastInsertId`](#documentation-sur-lastinsertid)
 - [PDOStatement : Méthodes `fetch` et `fetchAll`](#pdostatement--méthodes-fetch-et-fetchall)
   - [Méthode `fetch`](#méthode-fetch)
-  - - [Documentation sur `fetch`](#documentation-sur-fetch)
+    - [Documentation sur `fetch`](#documentation-sur-fetch)
   - [Méthode `fetchAll`](#méthode-fetchall)
+    - [Documentation sur `fetchAll`](#documentation-sur-fetchall)
+- [PDO : Les requêtes préparées](#pdo--les-requêtes-préparées)
+  - [Méthode `prepare`](#méthode-prepare)
+    - [Documentation sur `prepare`](#documentation-sur-prepare)
+  - [Méthode `bindParam`](#méthode-bindparam)
+    - [Documentation sur `bindParam`](#documentation-sur-bindparam)
+  - [Méthode `bindValue`](#méthode-bindvalue)
+    - [Documentation sur `bindValue`](#documentation-sur-bindvalue)
+  - [Différence Clé entre `bindParam` et `bindValue`](#différence-clé-entre-bindparam-et-bindvalue)
+  - [Méthode `execute`](#méthode-execute)
+    - [Documentation sur `execute`](#documentation-sur-execute)
   
     
 
@@ -798,6 +801,17 @@ endif;
 
 ---
 
+#### Documentation sur `fetchAll`
+`PDOStatement::fetchAll()` récupère toutes les lignes d'un jeu de résultats PDOStatement et le retourne sous forme de tableau indexé contenant des tableaux associatifs, des tableaux indexés ou des objets selon le mode de récupération défini.
+
+https://www.php.net/manual/fr/pdostatement.fetchall.php
+
+---
+
+[Retour au menu](#menu)
+
+---
+
 ## PDO : Les requêtes préparées
 
 Les requêtes préparées sont une fonctionnalité de PDO qui permet de préparer une requête SQL avant de l'exécuter. Cela permet de séparer la requête SQL des données, ce qui permet d'éviter les **injections SQL**.
@@ -862,6 +876,8 @@ $requete = $pdo->prepare(
 
 #### Documentation sur `prepare`
 
+Cette méthode permet de préparer une requête SQL à l'exécution. Elle analyse la requête et la "prépare" pour une exécution ultérieure avec des données spécifiques.
+
 https://www.php.net/manual/fr/pdo.prepare.php
 
 
@@ -909,6 +925,7 @@ $requete->closeCursor();
 $pdo=null;
 ?>
 ```
+
 Exemple avec un point d'interrogation (attention lecture de gauche à droite en commençant à 1) :
 
 ```php
@@ -932,6 +949,7 @@ $pdo=null;
 
 #### Documentation sur `bindParam`
 
+Cette méthode lie une variable PHP à un marqueur nommé ou à un point d'interrogation dans la requête préparée. La valeur de la variable est évaluée au moment de l'exécution de la requête et est liée par référence.
 
 https://www.php.net/manual/fr/pdostatement.bindparam.php
 
@@ -1005,6 +1023,8 @@ $pdo=null;
 
 #### Documentation sur `bindValue`
 
+`PDOStatement::bindValue()` associe une valeur à un paramètre dans une requête préparée.
+
 https://www.php.net/manual/fr/pdostatement.bindvalue.php
 
 
@@ -1016,7 +1036,7 @@ https://www.php.net/manual/fr/pdostatement.bindvalue.php
 
 
 
-#### Différence Clé entre `bindParam` et `bindValue`
+### Différence Clé entre `bindParam` et `bindValue`
 
 La différence cruciale réside dans le moment où la valeur est évaluée :
 
@@ -1103,4 +1123,5 @@ https://www.php.net/manual/fr/pdostatement.execute.php
 [Retour au menu](#menu)
 
 ---
+
 
