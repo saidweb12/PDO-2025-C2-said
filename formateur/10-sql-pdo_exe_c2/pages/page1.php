@@ -99,6 +99,11 @@ $request4->closeCursor();
     <title>Page 1</title>
 </head>
 <body>
+<h1>PDO et pdo_exe_c2.sql</h1>
+<nav>
+    <a href="./">Accueil</a>
+    <a href="./?p=2">Accueil</a>
+</nav>
 <?php
 // vues
 echo "<h3>Requête 1 avec query</h3>";
