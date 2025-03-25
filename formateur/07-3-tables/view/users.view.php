@@ -13,6 +13,12 @@ include "inc/menu.inc.view.php";
 ?>
 <h1>Les utilisateurs</h1>
 <p>Par ordre login ascendant</p>
-
+<?php
+foreach($users as $user):
+?>
+<h2><?=$user['theuserlogin']?></h2>
+<?php
+endforeach;
+?>
 </body>
 </html>

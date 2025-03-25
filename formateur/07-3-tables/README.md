@@ -12,7 +12,7 @@ votreNom/07-3-tables/view/accueil.view.php
 
 votreNom/07-3-tables/view/articles.view.php
 
-  `./?users`
+  `./?rubriques`
 
 votreNom/07-3-tables/view/rubriques.view.php
 

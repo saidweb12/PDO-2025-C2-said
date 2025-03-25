@@ -12,7 +12,12 @@
 include "inc/menu.inc.view.php";
 ?>
 <h1>Toutes les rubriques</h1>
-
-
+<?php
+foreach($rubriques as $rubrique):
+?>
+<h2><?=$rubrique['thesectiontitle']?></h2>
+<?php
+endforeach;
+?>
 </body>
 </html>

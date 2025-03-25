@@ -37,8 +37,8 @@ $insertTheArticle = $db->exec("INSERT INTO `thearticle`  (`thearticletitle`, `th
 // on récupère l'id de la dernière ligne insérée
 $lastId = $db->lastInsertId();
 
-// on modifie la date des articles dont l'id est entre 400 et 500 pour la date du jour
-$updateTheArticle = $db->exec("UPDATE `thearticle` SET `thearticledate` = NOW() WHERE `idthearticle` BETWEEN 400 AND 500");
+// on modifie la date des articles dont l'id est entre 495 et 500 pour la date du jour
+$updateTheArticle = $db->exec("UPDATE `thearticle` SET `thearticledate` = NOW() WHERE `idthearticle` BETWEEN 495 AND 500");
 
 // fermeture de la connexion
 $db = null;
@@ -56,7 +56,7 @@ $db = null;
 </head>
 <body>
 <h1>PDO::exec</h1>
-<p>PDO::query — Prépare et Exécute une requête SQL sans marque substitutive (non préparée), est généralement utilisée pour les "INSERT, DELETE ou UPDATE" sans entrée d'utilisateur</p>
+<p>PDO::exec — Exécute une requête SQL sans marque substitutive (non préparée), est généralement utilisée pour les "INSERT, DELETE ou UPDATE" sans entrée d'utilisateur</p>
 <p>PDO::exec — Exécute une requête SQL et retourne le nombre de lignes affectées par la requête</p>
 <p>$lastId = $db->lastInsertId(); permet de récupérer la dernière insertion (avec la connexion qui est celle de l'utilisateur courant)</p>
 <h2>Nombre de ligne insérée: <?=$insertTheArticle?>, ID de cette dernière ligne : <?=$lastId?></h2>
