@@ -31,17 +31,6 @@ try{
     die($e->getMessage());
 }
 
-
-
-// on récupère les champs 'idthearticle', 'thearticletitle' et 'thearticledate' lorsque la date est supérieure à '2020-01-01 20:43:30'
-$requestTheArticle = $db->query("
-        SELECT * FROM `thearticle` ORDER BY `thearticledate` DESC LIMIT 20");
-// récupération de toutes les données au format tableau indexé (fetchAll) contenant des tableaux associatifs ($db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);)
-$resultTheArticle = $requestTheArticle->fetchAll();
-
-// bonne pratique
-$requestTheArticle->closeCursor();
-
 // déconnexion (on a déjà récupéré les résultats)
 include"view/accueil.view.php";
 ?>
