@@ -33,7 +33,7 @@ $request->closeCursor();
 $userRequest = $db->query("
     SELECT u.`idtheuser`, 
            u.`theusername` 
-    FROM `theuser` u WHERE 1;
+    FROM `theuser` u ORDER BY u.theuserlogin ASC;
 ");
 
 $users = $userRequest->fetchAll();
