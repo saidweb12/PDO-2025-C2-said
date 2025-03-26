@@ -100,6 +100,9 @@ $request4->closeCursor();
 </head>
 <body>
 <h1>PDO et pdo_exe_c2.sql</h1>
+<?php 
+include "inc/menu.php";
+?>
 <nav>
     <a href="./">Accueil</a>
     <a href="./?p=2">Accueil</a>

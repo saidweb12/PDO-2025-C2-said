@@ -21,7 +21,7 @@ try{
 }
 
 // création d'un routeur
-include "pages/page1.php";
+include "pages/homepage.php";
 
 // fermeture de la connexion
 $db = null;
