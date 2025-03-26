@@ -11,4 +11,4 @@ const DB_CONNECT_USER = "root";
 const DB_CONNECT_PWD = "";
 
 // pages acceptées dans le menu
-const PAGE_MENU = ["query-fetchall","exec"];
+const PAGE_MENU = ["query-fetchall","exec","prepare-bindParam"];

@@ -12,7 +12,7 @@ $insert = $db->exec("
 
 // $insert contient le nombre de lignes affectées (ici 1)
 
-// on peut récupérer le dernier id inséré par cette connexion (utile pour les multiples insertions)
+// on peut récupérer le dernier id inséré par cette connexion (utile pour les multiples insertions).
 $insertArticlesId = $db->lastInsertId();
 
 // update de la table articles
