@@ -8,9 +8,10 @@
     <title>PDO et la DB pdo_exe_c2 | Accueil</title>
 </head>
 <body>
-<h1>PDO et la DB pdo_exe_c2 | Accueil</h1>
 <?php
 include "inc/menu.php";
 ?>
+<h1>PDO et la DB pdo_exe_c2 | Accueil</h1>
+
 </body>
 </html>

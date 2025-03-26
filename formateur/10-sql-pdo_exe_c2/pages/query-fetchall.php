@@ -96,13 +96,44 @@ $request4->closeCursor();
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Page 1</title>
+    <title>Méthode query, fetchAll et foreach</title>
 </head>
 <body>
-<h1>PDO et pdo_exe_c2.sql</h1>
 <?php
 include "inc/menu.php";
 ?>
+<h1>PDO et pdo_exe_c2.sql</h1>
+<h2>Méthode query, fetchAll et foreach</h2>
+<p>Voici les lignes utilisées</p>
+<code><pre>
+    $request1 = $db->query("SELECT ...");
+
+    // on vérifie si on a récupéré au moins un article
+    if($request1->rowCount()>0){
+
+    // transformation en tableau indexé
+    // On ne connait pas le nombre exact
+    $result1 = $request1->fetchAll();
+
+    // variable d'affichage
+    $affiche1 = "";
+
+    // boucle tant qu'on a des résultats
+    // $k est la cléf et $item la valeur
+    foreach($result1 as $k => $item){
+        $affiche1 .= ($k+1).") ID: $item[id] | Titre: $item[titre]
+        | Texte: $item[texte] | Date de création: $item[date_creation]";
+
+    }
+
+    }else{
+        $affiche1 = "1) Pas d'article";
+    }
+
+    // fermeture du curseur
+    $request1->closeCursor();
+    </pre></code>
+<p>On affichera dans la vue la variable $affiche1 puis les autres</p>
 <?php
 // vues
 echo "<h3>Requête 1 avec query</h3>";
