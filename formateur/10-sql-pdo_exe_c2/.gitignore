@@ -1,2 +1,4 @@
 # MySQL production
 config-prod.php
+
+*.DS_Store
