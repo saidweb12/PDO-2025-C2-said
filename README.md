@@ -30,6 +30,8 @@ Connexion PDO - PHP / MySQL, MariaDB, etc ...
   - [Méthode `bindValue`](#méthode-bindvalue)
     - [Documentation sur `bindValue`](#documentation-sur-bindvalue)
   - [Différence Clé entre `bindParam` et `bindValue`](#différence-clé-entre-bindparam-et-bindvalue)
+    - [Avec `bindParam`](#avec-bindparam)
+    - [Avec `bindValue`](#avec-bindvalue)
   - [Méthode `execute`](#méthode-execute)
     - [Documentation sur `execute`](#documentation-sur-execute)
   
@@ -1046,6 +1048,7 @@ La différence cruciale réside dans le moment où la valeur est évaluée :
 
 Utilisez `bindParam()` si vous avez besoin de modifier la valeur de la variable après la liaison et avant l'exécution de la requête. C'est utile dans les boucles où la valeur change à chaque itération.
 
+#### Avec bindParam
 ```php
 <?php
 $pdo = new PDO(...);
@@ -1066,6 +1069,29 @@ $requete->execute();// color = 'red' & size > 7
 $color = "green";
 $size = 4;
 $requete->execute();// color = 'green' & size > 4
+```
+
+#### Avec bindValue
+```php
+<?php
+$pdo = new PDO(...);
+$requete = $pdo->prepare("
+  SELECT * 
+  FROM produits 
+  WHERE color = ? AND size > ? ;
+  ");
+$color = "blue";
+$size = 5;
+$requete->bindValue(1, $color, PDO::PARAM_STR);
+$requete->bindValue(2, $size, PDO::PARAM_INT);
+
+$requete->execute(); // color = 'blue' & size > 5
+$color = "red";
+$size = 7;
+$requete->execute();// reste color = 'blue' & size > 5
+$color = "green";
+$size = 4;
+$requete->execute();// color = 'blue' & size > 5
 ```
 
 Utilisez `bindValue()` si la valeur est connue au moment de la liaison et ne changera pas. C'est plus direct et plus simple dans la plupart des cas.
