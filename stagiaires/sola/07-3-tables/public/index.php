@@ -31,12 +31,6 @@ try{
     die($e->getMessage());
 }
 
-// déconnexion (on a déjà récupéré les résultats)
-include"view/accueil.view.php";
-?>
-
-<?php
-
 // suivant l'existence de certaines variables get
 if(!empty($_GET)) {
 // effectuez la requête SQL propre à chaque page, puis appelez les vues vers les pages
@@ -44,17 +38,17 @@ if(!empty($_GET)) {
     $requestArticles = $db->query("SELECT * FROM `thearticle` ORDER BY `thearticledate` DESC LIMIT 30");
     $articles = $requestArticles -> fetchAll();
     include '../view/articles.view.php';
-    $requestTheArticle->closeCursor();
+     $requestArticles->closeCursor();
  } else if(isset($_GET['users'])) {
     $requetUsers = $db->query("SELECT * FROM `theuser` ORDER BY `theuserlogin`");
     $users = $requetUsers -> fetchAll();
     include '../view/users.view.php';
-    $requestTheArticle->closeCursor();
+     $requetUsers->closeCursor();
  } else if(isset($_GET['rubriques'])) {
     $requestRubriques = $db->query("SELECT * FROM `thesection`");
     $rubriques = $requestRubriques -> fetchAll();
     include '../view/rubriques.view.php';
-    $requestTheArticle->closeCursor();
+     $requestRubriques->closeCursor();
  }
 
 

@@ -91,6 +91,7 @@ foreach($affiche1 as $k => $item){
     echo ($k+1).") ID: $item[id] | Titre: $item[titre] | Texte: $item[texte] | Date de création: $item[date_creation]<br>";
 
 }
+var_dump($affiche2);
 ?>
 </body>
 </html>

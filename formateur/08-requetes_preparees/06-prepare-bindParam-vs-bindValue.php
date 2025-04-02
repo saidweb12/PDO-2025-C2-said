@@ -38,9 +38,10 @@ require_once "PDOConnect.php";
 </code>
     <?php
    $query = $PDOConnect->prepare("SELECT * FROM countries WHERE id BETWEEN ? AND ?");
-   $prems=5;$dems =15;
+
    $query->bindParam(1, $prems, PDO::PARAM_INT);
    $query->bindParam(2, $dems, PDO::PARAM_INT);
+    $prems=5;$dems =15;
    $query->execute();
    echo $query->rowCount()."<br>";
 
@@ -80,7 +81,7 @@ $query->bindValue(2, $dems, PDO::PARAM_INT);
 $query->execute();
 echo $query->rowCount()."<br>";
 
-// soit utiliser l'execute, qui lui même utilise le bindValue par défaut (! pas de vérification de type, ni de retour)
+// soit utiliser l'execute, qui lui-même utilise le bindValue par défaut (! pas de vérification de type, ni de retour)
 
 $query->execute([10,15]);
 echo $query->rowCount()."<br>";
