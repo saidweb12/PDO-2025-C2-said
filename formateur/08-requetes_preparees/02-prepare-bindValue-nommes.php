@@ -36,7 +36,7 @@ require_once "PDOConnect.php";
     // Intégrité de la DB en péril !
     //$recup = $PDOConnect->query("SELECT * FROM countries WHERE id BETWEEN $num1 AND $num2");
 
-    // requête sans entrée utilisateur avec marqueur nommé
+    // requête sans entrées 'utilisateur' avec marqueur nommé
     $sql = "SELECT * FROM countries WHERE id BETWEEN :lid AND :lid2 LIMIT :limi , :offset";
     // on prépare la requête
     $query = $PDOConnect->prepare($sql);

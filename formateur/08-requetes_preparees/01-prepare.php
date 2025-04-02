@@ -15,7 +15,7 @@ require_once "PDOConnect.php";
 <body>
     <h1>Prepare simple</h1>
     <?php include "menu.php" ?>
-    <p>Une requête sans entrés utilisateurs dans un prepare n'a que peu d'intérêt, mis à part la gestion du cache qui peut être améliorée.</p>
+    <p>Une requête sans entrées 'utilisateur' dans un prepare n'a que peu d'intérêt, mis à part la gestion du cache qui peut être améliorée.</p>
 <code>
     <pre>
     // requête sans entrée utilisateur
