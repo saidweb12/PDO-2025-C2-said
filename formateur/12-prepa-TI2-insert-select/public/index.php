@@ -30,5 +30,10 @@ try{
 # ici notre code de traitement de la page
 
 
+
+# bonne pratique
+# fermeture de connexion
+$db = null;
+
 # chargement de la vue
 require_once "../view/homepage.view.php";
