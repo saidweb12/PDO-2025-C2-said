@@ -30,9 +30,34 @@ function getAllMessagesOrderByDateDesc(PDO $connection): string|array
 }
 
 // création d'une fonction qui insert un message dans
-// la table `messages`
-function addMessage(PDO $con,string $name, string $email, string $text) : bool
+// la table `messages` en bloquant les injections SQL
+function addMessage(PDO $con,string $name, string $email, string $text) : bool|string
 {
+    // erreur vide au cas où
+    $erreur = "";
+    // protection supplémentaire
+
+    // vérification du mail
+    $email = filter_var($email,FILTER_VALIDATE_EMAIL);
+    if($email===false){
+        $erreur .= "Email incorrect<br>";
+    }
+
+    // vérification du nombre de caractères strlen() et validité du nom
+    $name = trim(htmlspecialchars(strip_tags($name),ENT_QUOTES));
+    if(empty($name)||strlen($name)>100){
+        $erreur .= "Nom incorrect<br>";
+    }
+
+    // vérification du nombre de caractères strlen() et validité du message
+    $text = trim(htmlspecialchars(strip_tags($text),ENT_QUOTES));
+    if(empty($text)||strlen($text)>600){
+        $erreur .= "Message incorrect<br>";
+    }
+
+    // si on a au moins 1 erreur
+    if(!empty($erreur)) return $erreur;
+
     $prepare = $con->prepare("
     INSERT INTO `messages` (`name`,`email`,`message`)
     VALUES (?,?,?)

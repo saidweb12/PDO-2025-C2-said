@@ -7,7 +7,7 @@
 
 # chargement des constantes de connexion en mode prod
 require_once "../config.php";
-# chargement du modèle
+# chargement du modèle (fonctions)
 require_once "../model/MessagesModel.php";
 
 # connexion à PDO
@@ -48,10 +48,16 @@ if(isset($_POST['name'],$_POST['email'],$_POST['message'])){
 
     // vérification ultime avant d'appeler l'insertion
     if(!empty($name) && $email !== false && !empty($message)){
+        // insertion dans la DB
         $insert = addMessage($db,$name,$email,$message);
+        // si on a des erreurs depuis le modèle
+        if(is_string($insert)){
+            $error = $insert;
+        }
 
     }else{
-        echo "KO => $name $email $message";
+        // création d'une erreur
+        $error = "Certains champs ne sont pas valides";
     }
 }
 

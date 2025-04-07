@@ -11,6 +11,13 @@
 <body>
 <h1>Accueil</h1>
 <h2>Laissez-nous un message</h2>
+<?php
+// si on a une erreur lors de l'insertion
+if(isset($error)):
+?>
+<h4 class="error"><?=$error?></h4>
+<?php
+    endif; ?>
 <form action="" method="post">
     <label for="name">Nom</label>
     <input type="text" name="name" id="name" required>
