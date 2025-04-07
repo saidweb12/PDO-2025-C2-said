@@ -20,11 +20,23 @@
     <textarea name="message" id="message" rows="10" required></textarea>
     <button type="submit">Envoyer</button>
 </form>
-<h2>X message(s)</h2>
+<h2><?=$h2?></h2>
 <div class="messages">
-    <h3>nom</h3>
-    <p>Message</p>
-    <p>Date</p>
+    <?php
+    // on a au moins un message
+    if($messages!=="aucun"):
+        foreach($messages as $message):
+    ?>
+    <h3><?=$message['name']?></h3>
+    <p><?=$message['message']?></p>
+    <p><?=$message['created_at']?></p>
+    <?php
+        endforeach;
+    endif;
+    ?>
 </div>
+<?php
+// var_dump($_POST,$messages);
+?>
 </body>
 </html>
