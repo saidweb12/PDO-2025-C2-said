@@ -11,8 +11,19 @@
 <?php
 include "inc/menu.inc.view.php";
 ?>
-<h1>Nos 30 derniers articles</h1>
+<h1>Nos <?=$nbArticles?> derniers articles</h1>
 <p>Par date desc</p>
 
+<?php
+foreach($articles as $article):
+?>
+    <h3><?=$article['thearticletitle']?><small> | Ecrit le<?=$article['thearticledate']?>  par <?=$article['theusername']?></small></h3>
+    <p><?=$article['thearticletext']?></p>
+
+<?php
+endforeach;
+
+var_dump($articles);
+?>
 </body>
 </html>
