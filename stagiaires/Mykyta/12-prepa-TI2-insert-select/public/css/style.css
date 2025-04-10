@@ -1,0 +1,16 @@
+body{
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 50px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.nomessages{
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
