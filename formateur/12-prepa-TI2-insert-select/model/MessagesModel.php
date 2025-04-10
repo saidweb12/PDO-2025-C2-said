@@ -1,7 +1,7 @@
 <?php
 
 // création d'une fonction qui va récupérer tous nos messages
-function getAllMessagesOrderByDateDesc(PDO $connection): string|array
+function getAllMessagesOrderByDateDesc(PDO $connection): array
 {
     // préparation de la requête
     $prepare = $connection->prepare("
@@ -12,13 +12,8 @@ function getAllMessagesOrderByDateDesc(PDO $connection): string|array
     try{
         // exécution de la requête
         $prepare->execute();
-        // on compte le nombre de résultats
-        $count = $prepare->rowCount();
-        // si nous n'avons pas de résultats
-        // On renvoie une chaîne de caractère (string).
-        if($count===0) return "Pas encore de message";
 
-        // on renvoie le tableau (array) indexé contenant tous les résultats
+        // on renvoie le tableau (array) indexé contenant tous les résultats (peut être vide si pas de message).
         return $prepare->fetchAll();
 
     // en cas d'erreur sql
@@ -37,17 +32,26 @@ function addMessage(PDO $con,string $name, string $email, string $text) : bool|s
     $erreur = "";
     // protection supplémentaire
 
-    // vérification du mail
-    $email = filter_var($email,FILTER_VALIDATE_EMAIL);
-    if($email===false){
-        $erreur .= "Email incorrect<br>";
+    // vérification du nombre de caractères strlen() et validité du nom
+    $nameVerify = strip_tags($name); # on retire les tags
+    $nameVerify = htmlspecialchars($nameVerify,ENT_QUOTES); // protection des caractères spéciaux, avec guillemet et double-guillemet
+    $nameVerify = trim($nameVerify); # on retire les espaces avant/arrière du nom
+    // si le nom est vide
+    if(empty($nameVerify)){
+        $erreur.="Votre nom est incorrect.<br>";
+    // si le nom est plus long qu'autorisé en db
+    }elseif(strlen($nameVerify)>100){
+        $erreur.="Votre nom est trop long.<br>";
     }
 
-    // vérification du nombre de caractères strlen() et validité du nom
-    $name = trim(htmlspecialchars(strip_tags($name),ENT_QUOTES));
-    if(empty($name)||strlen($name)>100){
-        $erreur .= "Nom incorrect<br>";
+
+    // vérification du mail
+    $email = filter_var($email,FILTER_VALIDATE_EMAIL);
+    // si le mail n'est pas bon
+    if($email===false){
+        $erreur .= "Email incorrect.<br>";
     }
+
 
     // vérification du nombre de caractères strlen() et validité du message
     $text = trim(htmlspecialchars(strip_tags($text),ENT_QUOTES));
@@ -58,12 +62,13 @@ function addMessage(PDO $con,string $name, string $email, string $text) : bool|s
     // si on a au moins 1 erreur
     if(!empty($erreur)) return $erreur;
 
+    // pas d'erreur détectée
     $prepare = $con->prepare("
     INSERT INTO `messages` (`name`,`email`,`message`)
     VALUES (?,?,?)
     ");
     try{
-        $prepare->execute([$name,$email,$text]);
+        $prepare->execute([$nameVerify,$email,$text]);
         return true;
     }catch(Exception $e){
         die($e->getMessage());

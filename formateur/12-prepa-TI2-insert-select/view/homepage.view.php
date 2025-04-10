@@ -12,6 +12,12 @@
 <h1>Accueil</h1>
 <h2>Laissez-nous un message</h2>
 <?php
+// si on a bien envoyé un message
+if(isset($thanks)):
+?>
+    <h4 class="thanks"><?=$thanks?></h4>
+<?php
+endif;
 // si on a une erreur lors de l'insertion
 if(isset($error)):
 ?>
@@ -27,23 +33,47 @@ if(isset($error)):
     <textarea name="message" id="message" rows="10" required></textarea>
     <button type="submit">Envoyer</button>
 </form>
-<h2><?=$h2?></h2>
+
+<?php
+// si on a pas de message (tableau vide)
+if(empty($messages)):
+?>
+
+<div class="nomessage">
+    <h2>Pas de message</h2>
+    <p>Veuillez consulter cette page plus tard</p>
+</div>
+<?php
+// le tableau n'est pas vide
+else:
+    // on compte les messages
+    $nbMessage = count($messages);
+    // on va ajouter une variable pour le 's' de message
+    // si nécessaire pour le h2 suivant
+    $pluriel = $nbMessage>1 ? "s" : "";
+?>
+
 <div class="messages">
+    <h2>Il y a <?=$nbMessage?> message<?=$pluriel?></h2>
     <?php
-    // on a au moins un message
-    if($messages!=="aucun"):
-        foreach($messages as $message):
+    // tant qu'on a des messages
+    foreach ($messages as $message):
     ?>
     <h3><?=$message['name']?></h3>
     <p><?=$message['message']?></p>
     <p><?=$message['created_at']?></p>
+    <hr>
     <?php
-        endforeach;
-    endif;
+    endforeach;
     ?>
+
 </div>
 <?php
-// var_dump($_POST,$messages);
+// fin du if
+endif;
+
+
+var_dump($_POST,$messages);
 ?>
 </body>
 </html>
