@@ -65,13 +65,13 @@ if(isset($_GET[PAGINATION_GET])&& ctype_digit($_GET[PAGINATION_GET])){
 $nbTotMessage = getNbTotalMessage($db);
 
 # on récupère la pagination
-$pagination = pagination(PAGINATION_GET, $page, PAGINATION_NB, $nbTotMessage);
+$pagination = pagination($nbTotMessage, PAGINATION_GET, $page, PAGINATION_NB);
 
 # pour obtenir le $offset pour les messages
 $offset = ($page-1)*PAGINATION_NB;
 
 # on veut récupérer les messages de la page courante
-$messages = getMessagePagination($db, $offset, PAGINATION_NB);
+$messages = getMessagePagination($db, $page, $offset, PAGINATION_NB);
 
 # chargement de la vue
 require_once "../view/homepage.view.php";

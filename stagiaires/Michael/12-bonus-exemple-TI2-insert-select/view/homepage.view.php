@@ -54,6 +54,7 @@ else:
 <div class="messages">
     <h2>Il y a <?=$nbTotMessage?> message<?=$pluriel?></h2>
     <?php
+    echo "<hr>$pagination";
     // tant qu'on a des messages
     foreach ($messages as $message):
     ?>
@@ -70,7 +71,7 @@ else:
 <?php
 // fin du if
 endif;
-echo $pagination;
+echo "$pagination<hr>";
 
 var_dump($_POST,$db,$page,$nbTotMessage,$pagination);
 ?>
