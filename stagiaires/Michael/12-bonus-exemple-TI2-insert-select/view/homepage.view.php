@@ -69,9 +69,10 @@ else:
 
 </div>
 <?php
+echo "$pagination";
 // fin du if
 endif;
-echo "$pagination<hr>";
+
 
 var_dump($_POST,$db,$page,$nbTotMessage,$pagination);
 ?>
