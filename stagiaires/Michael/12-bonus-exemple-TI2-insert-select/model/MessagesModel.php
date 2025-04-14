@@ -84,7 +84,7 @@ function getNbTotalMessage(PDO $con): int
     return $query->fetch()['nb'];
 }
 
-function getMessagePagination(PDO $con, int $page, int $offset, int $limit): array
+function getMessagePagination(PDO $con, int $offset, int $limit): array
 {
     $prepare = $con->prepare(
         "SELECT * FROM `messages`

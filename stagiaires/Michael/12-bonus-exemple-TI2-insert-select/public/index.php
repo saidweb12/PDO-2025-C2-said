@@ -71,7 +71,7 @@ $pagination = pagination($nbTotMessage, PAGINATION_GET, $page, PAGINATION_NB);
 $offset = ($page-1)*PAGINATION_NB;
 
 # on veut récupérer les messages de la page courante
-$messages = getMessagePagination($db, $page, $offset, PAGINATION_NB);
+$messages = getMessagePagination($db, $offset, PAGINATION_NB);
 
 # chargement de la vue
 require_once "../view/homepage.view.php";

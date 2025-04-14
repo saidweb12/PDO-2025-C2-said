@@ -16,7 +16,7 @@
 
     if (isset($recue)):
     ?>
-        <h4 class='thanks'><?= $recue ?></h4>;
+        <h4 class='thanks'><?= $recue ?></h4>
     <?php
     endif;
     // si on a une erreur lors de l'insertion
