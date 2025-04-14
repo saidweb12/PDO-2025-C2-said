@@ -1,0 +1,4 @@
+config-prod.php
+.idea/
+*.DS_Store
+config.php
