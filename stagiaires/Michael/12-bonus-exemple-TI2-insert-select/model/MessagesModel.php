@@ -156,7 +156,7 @@ function pagination(int $nbtotalMessage, string $get="page", int $pageActu=1, in
                 // si nous ne sommes pas sur la dernière page
             } else {
                 // tous les liens vont vers la dernière page
-                $sortie .= "  <a href='?$get=$nbPages'>$nbPages</a> <a href='?$get=" . ($pageActu + 1) . "'>> <a href='?$get=$nbPages'>>></a>";
+                $sortie .= "  <a href='?$get=$nbPages'>$nbPages</a> <a href='?$get=" . ($pageActu + 1) . "'>></a> <a href='?$get=$nbPages'>>></a>";
             }
         }
     }
