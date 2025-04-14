@@ -23,11 +23,11 @@
 
 <form action="" method="post">
     <label for="name">Nom</label>
-    <input type="text" name="name" id="name" required>
+    <input type="text" name="name" id="name" maxlength="60" required>
     <label for="email">Email</label>
-    <input type="email" name="email" id="email" required>
+    <input type="email" name="email" id="email" maxlength="120" required>
     <label for="message">Message</label>
-    <textarea name="message" id="message" rows="12" maxlength="600" required style = "resize: none;"></textarea>
+    <textarea name="message" id="message" rows="10" maxlength="500" required style = "resize: none;"></textarea>
     <button type="submit">Envoyer</button>
 </form>
 <hr>
