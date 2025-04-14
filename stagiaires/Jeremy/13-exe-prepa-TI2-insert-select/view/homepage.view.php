@@ -27,23 +27,26 @@
 
     </form>
     <hr>
-</pre>
+    <?php
+$nombMessage = isset($messages) ? count($messages) : 0;
+if ($nombMessage < 1): ?>
+    <p>Pas encore de message</p>
+<?php elseif ($nombMessage === 1): ?>
+    <p>1 message : Il y a <?= $nombMessage ?> message</p>
+<?php else: ?>
+    <p>Plusieurs messages : Il y a <?= $nombMessage ?> messages</p>
+<?php endif; ?>
 <hr>
-<pre>
-Affichage du nombre de messages :
-
-Pas de message : Pas encore de message
-1 message : Il y a 1 message
-Plusieurs messages : Il y a X messages
-</pre>
-<hr>
-<pre>
-    Nos messages par date DESC
-
-    NOM
-    TEXTE
-    DATE
-</pre>
-<hr>
+<?php if (!empty($messages)): ?>
+    <h2>Nos messages (triés par date DESC)</h2>
+    <?php foreach ($messages as $message): ?>
+        <div>
+            <strong>NOM:</strong> <h3 style="display: inline;"><?= htmlspecialchars($message['surname']) ?></h3><br>
+            <strong>TEXTE:</strong> <p style="display: inline;"><?= nl2br(htmlspecialchars($message['message'])) ?></p><br>
+            <strong>DATE:</strong> <p style="display: inline;"><?= htmlspecialchars($message['create_date']) ?></p>
+        </div>
+        <hr>
+    <?php endforeach; ?>
+<?php endif; ?>
 </body>
 </html>

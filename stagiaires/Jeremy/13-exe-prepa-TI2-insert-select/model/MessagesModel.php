@@ -5,7 +5,7 @@
 function getAllMessagesOrderByDateDesc(PDO $connection): array
 {
     // préparation de la requête
-    $prepare = $connection->prepare(" SELECT * FROM `article`ORDER BY `article`.`created_date` DESC");
+    $prepare = $connection->prepare(" SELECT * FROM `article`ORDER BY `article`.`create_date` DESC");
 
     // essai / erreur
     try{
