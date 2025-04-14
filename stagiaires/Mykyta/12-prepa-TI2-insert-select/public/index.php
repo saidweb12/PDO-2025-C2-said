@@ -29,24 +29,24 @@ try{
 
 # ici notre code de traitement de la page
 
-if (isset($_POST["name"], $_POST["email"], $_POST["mesage"])){
+if (isset($_POST["name"], $_POST["email"], $_POST["message"])) {
     $name = strip_tags($_POST['name']);
-    $name = htmlspecialchars($_POST['name'],ENT_QUOTES);
-    $name =trim($name);
+    $name = htmlspecialchars($name, ENT_QUOTES);
+    $name = trim($name);
     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-    
+
     $message = strip_tags($_POST['message']);
-    $message = htmlspecialchars($_POST['message'],ENT_QUOTES);
+    $message = htmlspecialchars($message, ENT_QUOTES);
     $message = trim($message);
-}
+
 
     //vérivication ultime avant d'appeler l'insertion
-    if (!empty($name) && $email !== false && !empty($message)){
+    if (!empty($name) && $email !== false && !empty($message)) {
         $insert = addMessage($db, $name, $email, $message);
-    }else{
+    } else {
         $error = "Erreur dans le formulaire !";
-    $error = "Erreur dans le formulaire !";
     }
+}
 
 //on veut récupérer tous les messages de la base de données
 $allMessages = getAllMessagesOrderByDateDesk($db);

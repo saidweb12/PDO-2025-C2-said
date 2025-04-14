@@ -47,7 +47,7 @@
     <p>Date</p>
 </div>
 <?php
-// var_dump ($_POST, $getAllMessagesOrderByDateDesk($db));
+ var_dump ($_POST, );
 ?> 
 </body>
 </html>
