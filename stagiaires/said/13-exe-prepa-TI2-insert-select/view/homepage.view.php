@@ -11,71 +11,25 @@
 <body>
 <h1>Exercice</h1>
 <h2>Laissez-nous un message</h2>
-<?php
-// si on a bien envoyé un message
-if(isset($thanks)):
-?>
-    <h4 class="thanks"><?=$thanks?></h4>
-<?php
-endif;
-// si on a une erreur lors de l'insertion
-if(isset($error)):
-?>
-<h4 class="error"><?=$error?></h4>
-<?php
-    endif; ?>
-<form action="" method="post">
-    <label for="name">Nom</label>
-    <input type="text" name="name" id="name" required>
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" required>
-    <label for="message">Message</label>
-    <textarea name="message" id="message" rows="10" required></textarea>
-    <button type="submit">Envoyer</button>
-</form>
+<pre>
+    Le formulaire se trouve ici
+</pre>
 <hr>
+<pre>
+Affichage du nombre de messages :
 
-<?php
-// si on a pas de message (tableau vide)
-if(empty($messages)):
-?>
-
-<div class="nomessage">
-    <h2>Pas de message</h2>
-    <p>Veuillez consulter cette page plus tard</p>
-</div>
-<?php
-// le tableau n'est pas vide
-else:
-    // on compte les messages
-    $nbMessage = count($messages);
-    // on va ajouter une variable pour le 's' de message
-    // si nécessaire pour le h2 suivant
-    $pluriel = $nbMessage>1 ? "s" : "";
-?>
-
-<div class="messages">
-    <h2>Il y a <?=$nbMessage?> message<?=$pluriel?></h2>
-    <?php
-    // tant qu'on a des messages
-    foreach ($messages as $message):
-    ?>
-    <h3><?=$message['surname']?></h3>
-    <p><?=$message['message']?></p>
-    <p><?=$message['create_date']?></p>
-    <hr>
-    <?php
-    endforeach;
-    ?>
-
-</div>
+Pas de message : Pas encore de message
+1 message : Il y a 1 message
+Plusieurs messages : Il y a X messages
+</pre>
 <hr>
-<?php
-// fin du if
-endif;
-var_dump($db, $_POST);
-?>
+<pre>
+    Nos messages par date DESC
 
-
+    NOM
+    TEXTE
+    DATE
+</pre>
+<hr>
 </body>
 </html>
